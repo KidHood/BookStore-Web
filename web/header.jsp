@@ -1,0 +1,89 @@
+<%-- 
+    Document   : header
+    Created on : Feb 13, 2023, 9:41:09 AM
+    Author     : ADMIN
+--%>
+<%@page import="model.Account"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+    <%
+        String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+                + request.getContextPath();
+        String keyword = request.getAttribute("keyword") + "";
+        keyword = (keyword.equals("null"))?"":keyword;
+        
+        String searchBy = request.getAttribute("searchby") + "";
+        searchBy = (searchBy.equals("null"))?"":searchBy;
+    %>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg bg-light">
+		<div class="container-fluid"><!-- main-controller?action=search&txtsearch=&searchby=byname -->
+			<a class="navbar-brand" href="<%=url %>/first-page"> <img
+				src="<%=url %>/img/logo/logo_vanthong.png"
+				alt="Bootstrap" height="24">
+			</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#">Trang chủ</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Combo
+							giảm giá</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Thể loại </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Sách tâm lí</a></li>
+							<li><a class="dropdown-item" href="#">Sách giáo khoa</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">Sách trẻ em</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link disabled">Hết hàng</a>
+					</li>
+				</ul>
+                                <div class ="d-flex">
+				<form class="d-flex" role="search" action="<%=url %>/main-controller" method="get">
+                                    <input type="hidden" name="action" value ="search"> 
+					<input class="form-control me-2" type="search"
+						placeholder="Nội dung tìm kiếm" aria-label="Search" name="txtsearch" value="<%=keyword %>">
+                                        <select class="form-control me-2" name ="searchby">
+                                            <option value="byname" <%=(searchBy.equals("byname"))?"selected='selected'":"" %>>By name</option>
+                                            <option value="bycategories" <%=(searchBy.equals("bycategories"))?"selected='selected'":"" %>>By categories</option>
+                                        </select>
+					<button class="btn btn-outline-success me-2" type="submit">Tìm</button>
+                                </form>
+                                        <span class="material-symbols-outlined me-2"><a class="btn" href="<%=url %>/main-controller?action=view-cart">shopping_cart</a></span>
+					<%
+						Object obj = session.getAttribute("account");
+                                                Account acc = (Account) obj;
+                                                if(acc == null){
+					%>
+						<a class="btn btn-primary" style = "white-space: nowrap;" href="<%=url %>/login.jsp">
+							Đăng nhập
+						</a>
+					<%}else{ %>
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-infor">
+							<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle btn btn-primary" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Tài khoản </a>
+							<ul class="dropdown-menu  dropdown-menu-end">
+							<li><a class="dropdown-item" href="<%=url %>/main-controller?action=history-order">Đơn mua</a></li>
+							<li><a class="dropdown-item" href="<%=url %>/client/changeInfor.jsp">Thay đổi thông tin</a></li>
+							<li><a class="dropdown-item" href="<%=url %>/client/changePwd.jsp">Đổi mật khẩu</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="main-controller?action=logout">Đăng xuất</a></li>
+						</ul></li>
+							
+						</ul>
+				</div>	
+					<%} %>
+				
+			</div>
+		</div>
+	</nav>

@@ -1,0 +1,55 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.btn-add-cart{
+    width: 100%;
+}
+.container-card{
+     justify-content: center;
+
+}
+.decribe{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.decribe.open{
+    display: flex;
+}
+
+.decribe-container {
+    background-color: #fff;
+    width: 900px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
+    animation: modalFadeIn ease .5s;
+}
+
+
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+    }
+    
+    to{
+        opacity: 1;
+        transform: translateY(0px)
+    }
+    /* pc: 1024px
+        tablet >= 740 & 1024px
+        mobile < 740px
+    */
+}
