@@ -8,9 +8,9 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <c:set var="url" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"/>
-    <c:set var="keyword" value="${requestScope.keyword}" />
-    <c:set var="searchBy" value="${requestScope.keyword}" />
+<c:set var="url" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"/>
+<c:set var="keyword" value="${requestScope.keyword}" />
+<c:set var="searchBy" value="${requestScope.keyword}" />
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid"><!-- main-controller?action=search&txtsearch=&searchby=byname -->

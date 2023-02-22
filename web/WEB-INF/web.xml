@@ -2,75 +2,75 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>MainController</servlet-name>
-        <servlet-class>controlller.MainController</servlet-class>
+        <servlet-class>controller.MainController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>controlller.LoginServlet</servlet-class>
+        <servlet-class>controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>controlller.RegisterServlet</servlet-class>
+        <servlet-class>controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchServlet</servlet-name>
-        <servlet-class>controlller.SearchServlet</servlet-class>
+        <servlet-class>controller.SearchServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>controlller.LogoutServlet</servlet-class>
+        <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeInforServlet</servlet-name>
-        <servlet-class>controlller.ChangeInforServlet</servlet-class>
+        <servlet-class>controller.ChangeInforServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangePwdServlet</servlet-name>
-        <servlet-class>controlller.ChangePwdServlet</servlet-class>
+        <servlet-class>controller.ChangePwdServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewBookDetail</servlet-name>
-        <servlet-class>controlller.ViewBookDetail</servlet-class>
+        <servlet-class>controller.ViewBookDetail</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddToCartServlet</servlet-name>
-        <servlet-class>controlller.AddToCartServlet</servlet-class>
+        <servlet-class>controller.AddToCartServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RemoveBookServlet</servlet-name>
-        <servlet-class>controlller.RemoveBookServlet</servlet-class>
+        <servlet-class>controller.RemoveBookServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateQuantityServlet</servlet-name>
-        <servlet-class>controlller.UpdateQuantityServlet</servlet-class>
+        <servlet-class>controller.UpdateQuantityServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CheckOutServlet</servlet-name>
-        <servlet-class>controlller.CheckOutServlet</servlet-class>
+        <servlet-class>controller.CheckOutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HistoryOrderServlet</servlet-name>
-        <servlet-class>controlller.HistoryOrderServlet</servlet-class>
+        <servlet-class>controller.HistoryOrderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeStatusOrderServlet</servlet-name>
-        <servlet-class>controlller.ChangeStatusOrderServlet</servlet-class>
+        <servlet-class>controller.ChangeStatusOrderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FilterHistoryOrder</servlet-name>
-        <servlet-class>controlller.FilterHistoryOrder</servlet-class>
+        <servlet-class>controller.FilterHistoryOrder</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FirstPage</servlet-name>
-        <servlet-class>controlller.FirstPage</servlet-class>
+        <servlet-class>controller.FirstPage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>OrderDetailServlet</servlet-name>
-        <servlet-class>controlller.OrderDetailServlet</servlet-class>
+        <servlet-class>controller.OrderDetailServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HomePage</servlet-name>
-        <servlet-class>HomePage</servlet-class>
+        <servlet-class>controller.HomePage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>

@@ -69,6 +69,7 @@
 					</button>
 				</div>
 				<!-- End Slider -->
+                                
 				<!-- Products -->
                                 <div class="row container-card" style="justify-content: center;">
                                 <c:set var="list" value="${requestScope.list}" />
@@ -100,7 +101,7 @@
                 <ul class="pagination">
                     <c:if test="${numPage > 1}">
                         <li class="page-item">
-                            <span class="page-link"><a href="${url}/main-controller?action=home&numberpage=${numPage-1}">Trước</a></span>
+                            <a class="page-link" href="${url}/main-controller?action=home&numberpage=${numPage-1}">Trước</a>
                           </li>
                     </c:if>
                   <li class="page-item active">
