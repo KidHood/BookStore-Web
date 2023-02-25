@@ -1,0 +1,57 @@
+body, html {
+  height: 100%;
+  background-image: url("../img/backgroud/backgroud_admin.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.body{
+    
+/*        filter: blur(8px);
+    -webkit-filter: blur(8px);*/
+/*     position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: -1;*/
+}
+
+.bg-text {
+    /* Black w/opacity/see-through */
+/*    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 20px;
+    text-align: center;*/
+    
+}
+
+.container{
+     background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.6);
+    color: white!important;
+    
+}
+
+.container >th{
+}
+
+.table{
+    color: white!important;
+}
+
+.text-ouline{
+    font-size: 25px;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: white;
+}

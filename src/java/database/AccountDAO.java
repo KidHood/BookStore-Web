@@ -7,6 +7,7 @@ package database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import model.Account;
 import tool.JDBCUtils;
@@ -19,8 +20,33 @@ public class AccountDAO implements DAOInterface<Account>{
 
     @Override
     public ArrayList<Account> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Account> result = null;
+        Connection conn = null;
+        try{
+            conn = JDBCUtils.makeConnection();
+            if(conn != null){
+                result = new ArrayList<>();
+                String sql = "select accID,email,fullname,phone,status,role from Accounts\n" +
+                    "	where email like '%@%'";
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+                    int accId = rs.getInt("accID");
+                    String email = rs.getString("email");
+                    String fullName = rs.getString("fullname");
+                    String phone = rs.getString("phone");
+                    int status = rs.getInt("status");
+                    int role = rs.getInt("role");
+                    result.add(new Account(accId, email, "", fullName, status, phone, role));
+                }
+            }
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
+    
     @Override
     public Account selectById(Account t) {
         Connection conn = null;
@@ -261,5 +287,26 @@ public class AccountDAO implements DAOInterface<Account>{
         return false;
     }
      
+     public boolean updateStatus(int status, int accID) {
+        Connection conn = null;
+        try{
+           conn = JDBCUtils.makeConnection();
+           if(conn !=null){
+               String sql = "update Accounts\n" +
+                            "set [status] = ?\n" +
+                            "where accID = ?";
+                       
+               PreparedStatement pst = conn.prepareStatement(sql);
+               pst.setInt(1, status);
+               pst.setInt(2, accID);
+               pst.executeUpdate();
+               conn.close();
+               return true;
+           }
+        }catch(Exception e){
+            e.printStackTrace();
+        } 
+        return false;
+    }
      
 }

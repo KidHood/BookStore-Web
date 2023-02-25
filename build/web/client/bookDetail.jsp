@@ -42,7 +42,7 @@
                 </div>
                 <div class="row m-0">
                     <div class="col-lg-4 left-side-product-box pb-3">
-                        <img src="<c:url value="${book.imgPath}" />" class="border p-3">
+                        <img src="<c:url value="productImage/${book.imgPath}" />" class="border p-3">
                     </div>
                     <div class="col-lg-8">
                         <div class="right-side-pro-detail border p-3 m-0">

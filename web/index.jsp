@@ -76,11 +76,11 @@
                                 <c:if test="${list != null}"  >
                                     <c:forEach items="${list}" var ="book">
                                         <div class="card" style="width: 18rem;">
-                                            <img class="card-img-top" src="${book.getImgPath()}" alt="Card image cap">
+                                            <img class="card-img-top" src="<c:url value="${url}/productImage/${book.imgPath}" />" alt="Card image cap">
                                             <div class="card-body">
                                                 <h5 class="card-title"><a href="${url}/main-controller?action=view-book-detail&bid=${book.id}">${book.name}</a></h5>
                                               <h6>Price: ${book.getPrice()} VND</h6>
-                                              <p class="card-text">${book.name}</p>
+                                              <p class="card-text">${book.catename}</p>
                                               <a href="${url}/main-controller?action=add-to-cart&bid=${book.id}" class="btn btn-primary btn-add-cart">Add to cart</a>
                                             </div>
                                          </div> 
@@ -107,7 +107,6 @@
                   <li class="page-item active">
                     <span class="page-link">
                       ${numPage}
-                      <span class="sr-only">(current)</span>
                     </span>
                   </li>
                   <li class="page-item"><a class="page-link" href="${url}/main-controller?action=home&numberpage=${(numPage+1)}">

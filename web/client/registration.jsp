@@ -72,7 +72,8 @@
 				</div>
                                 <input class="btn btn-primary form-control" type="submit" value="Đăng ký" id="submit" style="visibility: hidden;">
 		</form>
-	</div>
+            </div>
+        </div>                       
       <%@include file ="../common/footer.jsp" %>
 </body>
 	<script type="text/javascript">

@@ -55,7 +55,7 @@ public class Book implements Serializable{
         this.name = name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 

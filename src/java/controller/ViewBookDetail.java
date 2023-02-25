@@ -8,10 +8,14 @@ package controller;
 import database.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
 import model.Book;
 
 /**
@@ -35,14 +39,30 @@ public class ViewBookDetail extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String bookId = request.getParameter("bid");
-            int Id = Integer.parseInt(bookId.trim());
-            //lay ra book object
+            //lay account
+            HttpSession session = request.getSession();
+            Account acc = (Account) session.getAttribute("account");
+             //lay ra book object
             BookDAO boDAO = new BookDAO();
-            Book book = boDAO.selectById(new Book(Id));
+            Book book = null;
+            if(bookId != null && !bookId.isEmpty()){
+                int Id = Integer.parseInt(bookId.trim());
+                book = boDAO.selectById(new Book(Id));
+            }
+            
             if(book != null){
                 request.setAttribute("bookDetail", book);
-                request.getRequestDispatcher("client/bookDetail.jsp").forward(request, response);
             }
+            if(acc != null){
+                if(acc.getRole() == 0)
+                    request.getRequestDispatcher("client/bookDetail.jsp").forward(request, response);
+                else if(acc.getRole() == 1){
+                   HashMap<Integer,String> list = boDAO.selectALlCateName();
+                    request.setAttribute("listcate", list);
+                    request.getRequestDispatcher("admin/updateBook.jsp").forward(request, response);
+                }
+            }else
+            request.getRequestDispatcher("client/bookDetail.jsp").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
         }

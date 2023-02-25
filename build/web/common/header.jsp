@@ -11,8 +11,9 @@
 <c:set var="url" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"/>
 <c:set var="keyword" value="${requestScope.keyword}" />
 <c:set var="searchBy" value="${requestScope.keyword}" />
+
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<div class="container-fluid"><!-- main-controller?action=search&txtsearch=&searchby=byname -->
 			<a class="navbar-brand" href="${url}/main-controller?action=home&numberpage=1"> 
                            <img
@@ -70,7 +71,7 @@
 							<li><a class="dropdown-item" href="${url}/client/changeInfor.jsp">Thay đổi thông tin</a></li>
 							<li><a class="dropdown-item" href="${url}/client/changePwd.jsp">Đổi mật khẩu</a></li>
 							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="main-controller?action=logout">Đăng xuất</a></li>
+							<li><a class="dropdown-item" href="${url}/main-controller?action=logout">Đăng xuất</a></li>
 						</ul></li>
 							
 						</ul>

@@ -72,6 +72,30 @@
         <servlet-name>HomePage</servlet-name>
         <servlet-class>controller.HomePage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewAllAccount</servlet-name>
+        <servlet-class>controller.ViewAllAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeAccountStatus</servlet-name>
+        <servlet-class>controller.ChangeAccountStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllBook</servlet-name>
+        <servlet-class>controller.ViewAllBook</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeBookStatus</servlet-name>
+        <servlet-class>controller.ChangeBookStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateBook</servlet-name>
+        <servlet-class>controller.UpdateBook</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeBookImage</servlet-name>
+        <servlet-class>controller.ChangeBookImage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/main-controller</url-pattern>
@@ -143,6 +167,30 @@
     <servlet-mapping>
         <servlet-name>HomePage</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllAccount</servlet-name>
+        <url-pattern>/view-all-account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeAccountStatus</servlet-name>
+        <url-pattern>/change-account-status</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllBook</servlet-name>
+        <url-pattern>/view-all-book</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeBookStatus</servlet-name>
+        <url-pattern>/change-book-status</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateBook</servlet-name>
+        <url-pattern>/update-book</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeBookImage</servlet-name>
+        <url-pattern>/change-book-image</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

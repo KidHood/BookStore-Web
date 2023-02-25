@@ -50,7 +50,9 @@ public class LoginServlet extends HttpServlet {
             if(acc != null ){
                 //admin
                 if(acc.getRole() == 1){
-                 
+                 url="admin/adminHome.jsp";
+                 HttpSession session  = request.getSession();
+                session.setAttribute("account", acc);
                 //guest    
                 }else{
                     url = "/main-controller?action=home&numberpage=1";
