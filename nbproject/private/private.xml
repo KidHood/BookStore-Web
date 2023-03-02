@@ -4,12 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/UpdateBook.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/tool/Encode.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/admin/book.jsp</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/client/cart.jsp</file>
             <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/database/BookDAO.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/database/AccountDAO.java</file>
             <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/admin/updateBook.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/ViewBookDetail.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/index.jsp</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/client/orderDetail.jsp</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/model/Book.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/model/Order.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/database/OrderDAO.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/Filters/FilterOrderAdmin.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/FilterHistoryOrder.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/admin/order.jsp</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/ChangeBookStatus.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/UpdateOrderAdminServlet.java</file>
+            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/admin/categories.jsp</file>
         </group>
     </open-files>
 </project-private>

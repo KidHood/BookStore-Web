@@ -90,6 +90,9 @@
         <c:if test="${cart == null}" >
         <h1 class="text-center">Giỏ hàng trống:33</h1>
         </c:if>
-        <%@include file ="../common/footer.jsp" %>
+        <div class="container-fluid">
+           <%@include file ="../common/footer.jsp" %> 
+        </div>
+        
     </body>
 </html>

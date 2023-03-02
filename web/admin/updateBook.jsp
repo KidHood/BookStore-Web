@@ -91,7 +91,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label for="fullName" class="fullName">File name:</label>
-                                             <input type="file" class="form-control" multiple="multiple" name = "imgPath" >
+                                             <input type="file" class="form-control" name = "imgPath" >
                                         </div>
                                         <hr class="m-0 pt-2 mt-2">
                                     </div>

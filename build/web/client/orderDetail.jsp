@@ -46,6 +46,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">TÊN</th>
+                            <th scope="col">MÔ TẢ</th>
                             <th scope="col">GIÁ</th>
                             <th scope="col">SỐ LƯỢNG</th>
                         </tr>
@@ -59,6 +60,7 @@
                         <tr><form action="${url}/main-controller" method="post">
                             <td>${book.id}</td>
                             <td><a href="${url}/main-controller?action=view-book-detail&bid=${book.id}">${book.name}</a></td>
+                            <td><p>${book.decription}</p></td>
                             <td>${book.price}</td>
                             <td>${lists.get(id)}</td>
                             <input type="hidden" name="bookid" value="${book.id}">

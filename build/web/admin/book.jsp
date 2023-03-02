@@ -32,7 +32,7 @@
             <div class="bg-text ">
                 <%@include file="headerAdminHome.jsp" %>
                 <div class ="container">
-                    <h1 class="text-center">Danh sách tài khoản</h1>
+                    <h1 class="text-center">Danh sách Sách</h1>
                     <h2 class="text-center text-danger">${requestScope.MSG}</h2>
                     <c:set var="list" value="${requestScope.lists}"/>
                     <a class="btn btn-success ml-auto" href="${url}/view-book-detail">Them Moi San Pham</a>

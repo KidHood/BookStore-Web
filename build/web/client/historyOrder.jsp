@@ -61,19 +61,22 @@
                <c:if test="${list != null}">
                    <c:set var="status" value="${['','Đang xử lý','Thành công','Bị hủy']}" />
                    <c:forEach items="${list}" var="ord" >
-                <tr>
-                    <th>${ord.orderID}</th>
-                    <th>${ord.orderDate}</th>
-                    <th>${ord.shipDate}</th>
-                    <th>${status[ord.status]}</th>
-                    <c:if test="${ord.getStatus() == 1}" >
-                    <th><a href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=3">Hủy đơn hàng</th>
-                    </c:if>
-                    <c:if test="${ord.getStatus() == 3}" >
-                    <th><a href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=1">Mua lại</th>
-                    </c:if>
-                    <th><a href="${url}/main-controller?action=view-order-detail&orderid=${ord.getOrderID()}">Chi tiết đơn hàng</a></th>
-               </tr>
+                        <tr>
+                            <td>${ord.orderID}</td>
+                            <td>${ord.orderDate}</td>
+                            <td>${ord.shipDate}</td>
+                            <td>${status[ord.status]}</td>
+                            <c:if test="${ord.getStatus() == 1}" >
+                                <td><a href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=3">Hủy đơn hàng</a></td>
+                            </c:if>
+                            <c:if test="${ord.getStatus() == 3}" >
+                                <td><a href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=1">Mua lại</a></td>
+                            </c:if>
+                            <c:if test="${ord.getStatus() == 2}" >
+                                <td></td>
+                            </c:if>
+                            <td><a href="${url}/main-controller?action=view-order-detail&orderid=${ord.getOrderID()}">Chi tiết đơn hàng</a></td>
+                       </tr>
                 
                    </c:forEach>
                </c:if>

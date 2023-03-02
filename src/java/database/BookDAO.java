@@ -53,12 +53,13 @@ public class BookDAO implements DAOInterface<Book>{
         try{
             conn = JDBCUtils.makeConnection();
             if(conn != null && searchBy != null){
-                String sql = "select PID, PName, price, imgPath, description,status,Plants.CateID as 'CateID',CateName\n"
-                            + "from Plants join Categories on Plants.CateID=Categories.CateID\n";
+                String sql = "select PID, PName, price, imgPath, description,status,Plants.CateID as 'CateID',CateName\n" +
+"                            from Plants join Categories on Plants.CateID=Categories.CateID \n" +
+"								where status = 1 ";
                 if(searchBy.equalsIgnoreCase("byname"))
-                    sql = sql + "where Plants.PName like ?";
+                    sql = sql + "and Plants.PName like ?  ";
                 else
-                    sql += "where CateName like ?";
+                    sql += "  and CateName like ?";
                 PreparedStatement pst = conn.prepareStatement(sql);
                 pst.setString(1, "%"+keyword+"%");
                 ResultSet rs = pst.executeQuery();
@@ -74,7 +75,9 @@ public class BookDAO implements DAOInterface<Book>{
                     Book book = new Book(id, name, price, imgPath, description, status, cateId, cateName);
                     list.add(book);
                 }
+                conn.close();
             }
+            
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -105,12 +108,34 @@ public class BookDAO implements DAOInterface<Book>{
                     String cateName = rs.getString("CateName");
                     result = new Book(id, name, price, imgPath, description, status, cateId, cateName);
             }
+                conn.close();
         }
         }catch(Exception e){
             e.printStackTrace();
         }
         return result;
     }
+    
+    public boolean selectCatename(String catename ) {
+        Connection conn = null;
+        try{
+            conn = JDBCUtils.makeConnection();
+            if(conn != null){
+                String sql ="select CateName from Categories where CateName = ?";
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, catename);
+                ResultSet rs =  pst.executeQuery();
+                while(rs.next()){
+                    return true;
+                }
+            conn.close();
+        }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
     public HashMap<Integer,String> selectALlCateName(){
         HashMap<Integer,String> result = null;
         Connection conn = null;
@@ -156,15 +181,57 @@ public class BookDAO implements DAOInterface<Book>{
         }
         return result;
     }
+    
+    public HashMap<Integer,Integer> selectNumBookEachCate(){
+        Connection conn = null;
+        HashMap<Integer,Integer> result = null;
+        try{
+           conn = JDBCUtils.makeConnection();
+           if(conn != null){
+               result = new HashMap<>();
+               String sql = "select Categories.CateID,count(Categories.CateID) as NumBook from Categories\n" +
+                "	join Plants on Categories.CateID = Plants.CateID\n" +
+                "		group by Categories.CateID";
+               PreparedStatement pst = conn.prepareStatement(sql);
+               ResultSet rs = pst.executeQuery();
+               while(rs.next()){
+                   int cateid = rs.getInt("CateID");
+                   int numBook = rs.getInt("NumBook");
+                   result.put(cateid, numBook);
+                }
+                       
+           }    
+           conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
         
-    @Override
+    public boolean insertCatename(String catename) {
+        Connection conn = null;
+        try{
+           conn = JDBCUtils.makeConnection();
+           if(conn !=null){
+            String sql = "insert into Categories values(?)";
+               PreparedStatement pst = conn.prepareStatement(sql);
+               pst.setString(1, catename);
+               pst.executeUpdate();
+               return true;
+           }
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        } 
+        return false;
+    }
+    
     public boolean insert(Book t) {
         Connection conn = null;
         try{
            conn = JDBCUtils.makeConnection();
            if(conn !=null){
             String sql = "insert Plants (PName,price,imgPath,[description],[status],CateID) values(?,?,?,?,?,?)";
-                System.out.println(t.getCateId() + "id in database");
                PreparedStatement pst = conn.prepareStatement(sql);
                pst.setString(1, t.getName());
                pst.setInt(2, t.getPrice());
@@ -173,9 +240,9 @@ public class BookDAO implements DAOInterface<Book>{
                pst.setInt(5, t.getStatus());
                pst.setInt(6, t.getCateId());
                pst.executeUpdate();
-               conn.close();
                return true;
            }
+            conn.close();
         }catch(Exception e){
             e.printStackTrace();
         } 
@@ -202,7 +269,8 @@ public class BookDAO implements DAOInterface<Book>{
          Connection conn = null;
         try{
            conn = JDBCUtils.makeConnection();
-           if(conn !=null){
+           if(conn != null){
+               System.out.println(t.getImgPath()+"day la image page in data base");
             String sql = "update Plants\n" +
                         "set PName = ?,\n" +
                         "price = ?,\n" +
@@ -218,10 +286,11 @@ public class BookDAO implements DAOInterface<Book>{
                pst.setString(4, t.getDecription());
                pst.setInt(5, t.getCateId());
                pst.setInt(6, t.getId());
+               
                pst.executeUpdate();
-               conn.close();
                return true;
            }
+           conn.close();
         }catch(Exception e){
             e.printStackTrace();
         } 
@@ -244,6 +313,7 @@ public class BookDAO implements DAOInterface<Book>{
                conn.close();
                return true;
            }
+           conn.close();
         }catch(Exception e){
             e.printStackTrace();
         } 
@@ -262,6 +332,29 @@ public class BookDAO implements DAOInterface<Book>{
                PreparedStatement pst = conn.prepareStatement(sql);
                pst.setString(1, imgPath);
                pst.setInt(2, bookID);
+               pst.executeUpdate();
+               conn.close();
+               conn.close();
+               return true;
+               
+           }
+        }catch(Exception e){
+            e.printStackTrace();
+        } 
+        return false;
+    }
+    
+    public boolean updateCategories(int cateid, String catename){
+          Connection conn = null;
+        try{
+           conn = JDBCUtils.makeConnection();
+           if(conn !=null){
+                String sql = "update Categories\n" +
+                        "set CateName = ?\n" +
+                        "where CateID= ?";
+               PreparedStatement pst = conn.prepareStatement(sql);
+               pst.setString(1,catename);
+               pst.setInt(2,cateid);
                pst.executeUpdate();
                conn.close();
                return true;

@@ -213,7 +213,28 @@ public class OrderDAO implements DAOInterface<Order>{
 
     @Override
     public boolean update(Order t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Connection cn= null;
+        try {
+            cn = JDBCUtils.makeConnection();
+            if(cn != null){
+                String sql = "update Orders\n" +
+                            "set shipdate = ?,\n" +
+                            "status = ?\n" +
+                            "where OrderID =  ?";
+
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setDate(1, t.getShipDate());
+                pst.setInt(2, t.getStatus());
+                pst.setInt(3, t.getOrderID());
+                int rs = pst.executeUpdate();
+                cn.close();
+               return true;
+               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
     
     public boolean updateStatus(int orderid, int status) {

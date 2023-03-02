@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import model.Account;
 import tool.JDBCUtils;
 
@@ -38,6 +39,30 @@ public class AccountDAO implements DAOInterface<Account>{
                     int status = rs.getInt("status");
                     int role = rs.getInt("role");
                     result.add(new Account(accId, email, "", fullName, status, phone, role));
+                }
+            }
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public HashMap<Integer, String> selectAccidEmail() {
+        HashMap<Integer, String> result = null;
+        Connection conn = null;
+        try{
+            conn = JDBCUtils.makeConnection();
+            if(conn != null){
+                result = new HashMap<>();
+                String sql = "select accID,email from Accounts \n" +
+                "	where email like '%@%'";
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+                    int accId = rs.getInt("accID");
+                    String email = rs.getString("email");
+                    result.put(accId, email);
                 }
             }
             conn.close();

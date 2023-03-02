@@ -46,25 +46,35 @@ public class UpdateBook extends HttpServlet {
             boolean flag = false;
             //check add hay update
             boolean isAdd = false;
+            
             String folder = getServletContext().getRealPath("productImage");
-                            System.out.println(folder);
-
+            System.out.println(folder);
+            //set file size
+            int maxFileSize = 50*1024*1024;
+            int maxMemSize = 50*1024*1024;
+                                
             DiskFileItemFactory factory = new DiskFileItemFactory();
-
+            factory.setSizeThreshold(maxMemSize);
             //configure a reposittory
             ServletContext servletContext =  this.getServletConfig().getServletContext();
 //            File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 //            factory.setRepository(repository);
             ServletFileUpload upload = new ServletFileUpload(factory);
+            upload.setSizeMax(maxMemSize);
+            upload.setHeaderEncoding("UTF-8");
             try{
               List<FileItem> items = upload.parseRequest(request);
+              //check chi gan gia chi book dua tren bid 1 lan duy nhat
+              boolean  checkBookIsRun = false;
               for(FileItem item : items){
                 if(item.getFieldName().equals("newbook")){
                     book = new Book();
                     isAdd = true;
                 }else{ 
-                    if(item.getFieldName().equals("bid")){
-                        if(!item.getString().trim().isEmpty()){
+                    if(item.getFieldName().equals("bid") ){
+                        if(!item.getString().trim().isEmpty() && !checkBookIsRun){
+                            checkBookIsRun = true;
+                            isAdd = false;
                             int realBookID = Integer.parseInt(item.getString().trim());
                             book = booDAO.selectById(new Book(realBookID));
                             System.out.println(item.getString());
@@ -86,7 +96,6 @@ public class UpdateBook extends HttpServlet {
                        System.out.println(item.getString());
                        flag = true;
                     }else if(item.getFieldName().equals("cateName")){
-                       System.out.println(item.getString());
                        int cateID = booDAO.selectCateIdByCateName(item.getString().trim());
                        System.out.println(cateID + "cateID");
                        book.setCateId(cateID);
@@ -95,14 +104,13 @@ public class UpdateBook extends HttpServlet {
                         if(item.getSize() > 0){
                             String originalFileName = item.getName();
                             int index = originalFileName.lastIndexOf(".");
-                            String ext = originalFileName.substring(index+1);
+                            String ext = originalFileName.substring(index + 1);
                             String fileName = System.currentTimeMillis() + "." +ext;
                             String folder1 = folder + "/" + fileName;
-
                             File file = new File(folder1);
-
+                            System.out.println("img name " + fileName);
                             book.setImgPath(fileName);
-                             flag = true;
+                            flag = true;
                             item.write(file);
                             }
                     }
@@ -111,11 +119,13 @@ public class UpdateBook extends HttpServlet {
         if(isAdd){
              book.setStatus(1);
              boolean temp = booDAO.insert(book);
+             System.out.println("Bo may insert");
              if(!temp){
                  flag = false; 
              }
          }else{
              boolean temp = booDAO.update(book);
+             System.out.println("Bo may update");
              if(!temp){
                  flag = false; 
              }

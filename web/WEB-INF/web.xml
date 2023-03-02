@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>FilterCateAdmin</filter-name>
+        <filter-class>Filters.FilterCateAdmin</filter-class>
+    </filter>
+    <filter>
+        <filter-name>FilterOrderAdmin</filter-name>
+        <filter-class>Filters.FilterOrderAdmin</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterOrderAdmin</filter-name>
+        <servlet-name>UpdateOrderAdminServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterCateAdmin</filter-name>
+        <servlet-name>UpdateCategoriesServlet</servlet-name>
+    </filter-mapping>
     <servlet>
         <servlet-name>MainController</servlet-name>
         <servlet-class>controller.MainController</servlet-class>
@@ -96,6 +112,14 @@
         <servlet-name>ChangeBookImage</servlet-name>
         <servlet-class>controller.ChangeBookImage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateCategoriesServlet</servlet-name>
+        <servlet-class>controller.UpdateCategoriesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateOrderAdminServlet</servlet-name>
+        <servlet-class>controller.UpdateOrderAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/main-controller</url-pattern>
@@ -191,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>ChangeBookImage</servlet-name>
         <url-pattern>/change-book-image</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCategoriesServlet</servlet-name>
+        <url-pattern>/update-categories</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateOrderAdminServlet</servlet-name>
+        <url-pattern>/update-order-admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
