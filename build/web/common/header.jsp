@@ -52,7 +52,7 @@
                                             <option value="byname" ${searchBy == 'byname'?"selected='selected'":""}>By name</option>
                                             <option value="bycategories" ${searchBy == 'bycategories'?"selected='selected'":""}>By categories</option>
                                         </select>
-					<button class="btn btn-outline-success me-2" type="submit">Tìm</button>
+					<button class="btn btn-success me-2" type="submit">Tìm</button>
                                 </form>
                                         <span class="material-symbols-outlined me-2"><a class="btn" href="${url}/main-controller?action=view-cart">shopping_cart</a></span>
                                         <c:set var="acc" value="${sessionScope.account}" />

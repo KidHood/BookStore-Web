@@ -29,11 +29,11 @@
 </style>
 <body>
       <%@include file ="../common/header.jsp" %>
+      <main class="container content">
         <c:if test="${acc == null}">
             <h1>Bạn chưa đăng nhập vui lòng truy cập <a href="${url}/index.jsp">Trang chủ</a> để đăng nhập!</h1>
         </c:if>
         <c:if test="${acc != null}">
-	<main class="container">
          <div class="text-center"><h1>ĐỔI MẬT KHẨU</h1></div>
 	<span class="red">
             ${requestScope.error}

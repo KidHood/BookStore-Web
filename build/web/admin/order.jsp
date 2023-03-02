@@ -121,7 +121,7 @@
                                         </td>
                                         <td>${listAcc.get(ord.accID) == null ?"Khách":listAcc.get(ord.accID)}</td>
                                         <td><button class="btn btn-success" name ="action" value="update" type="submit">Cập nhật</button></td>
-                                        <td><a>Chi Tiet</a></td>
+                                        <td><a href="${url}/view-order-detail?orderid=${ord.orderID}">Chi Tiết</a></td>
                                     </tr>
                                 </form>
                             </c:forEach>

@@ -1,3 +1,9 @@
+:root{
+    --header-space:58px;
+}
+.content{
+    min-height: calc(100vh - 58px);
+}
 body {
     font-family: 'Roboto Condensed', sans-serif;
     background-color: #f5f5f5

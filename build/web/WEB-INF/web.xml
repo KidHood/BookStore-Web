@@ -106,7 +106,7 @@
     </servlet>
     <servlet>
         <servlet-name>UpdateBook</servlet-name>
-        <servlet-class>controller.UpdateBook</servlet-class>
+        <servlet-class>controller.UpdateBookAdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeBookImage</servlet-name>

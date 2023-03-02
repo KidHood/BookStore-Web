@@ -43,7 +43,7 @@
                     </div>
                     <div class="row m-0 text-dark">
                         <div class="col-lg-4 left-side-product-box pb-3">
-                            <img src="<c:url value="productImage/${book.imgPath}" />" class="border p-3">
+                            <img src="<c:url value="productImage/${book.imgPath}" />"  alt="Ảnh sản Phẩm" class="border p-3">
                         </div>
                         <div class="col-lg-8">
                             <div class="right-side-pro-detail border p-3 m-0">
@@ -68,10 +68,11 @@
                                          </div>
                                         <hr class="p-0 m-0">
                                     </div>
+                                    
                                     <div class="col-lg-12 pt-2">
                                         <div class="mb-3">
                                         <label for="decription" class="fullName">Mô tả</label>
-                                         <input type="text" class="form-control" id="decription" placeholder="" name = "decription" value="${book.decription}">
+                                         <textarea rows="4" cols="50" name="decription" class="form-control">${book.decription}</textarea>
                                          </div>
                                         <hr class="m-0 pt-2 mt-2">
                                     </div>

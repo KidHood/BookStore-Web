@@ -35,7 +35,7 @@
         <!-- end header -->   
         <c:set var="book" value="${requestScope.bookDetail}" />
         <c:if test="${book != null}" >
-        <div class="container mb-4">
+        <div class="container mb-4 content">
             <div class="col-lg-8 border p-3 main-section bg-white">
                 <div class="row hedding m-0 pl-3 pt-0 pb-3">
                     Chi tiết sản phẩm

@@ -36,7 +36,7 @@
         </c:if>
         
         <c:if test="${acc != null}">
-	<div class="container">
+	<div class="container content">
 	<div class="text-center">
 		<h1>THAY ĐỔI THÔNG TIN</h1>
 		<div class="red" id="error">

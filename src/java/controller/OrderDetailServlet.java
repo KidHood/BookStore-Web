@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
 
 /**
  *
@@ -48,7 +50,12 @@ public class OrderDetailServlet extends HttpServlet {
                     request.setAttribute("lists",lists);
                 }
             }
-            request.getRequestDispatcher("client/orderDetail.jsp").forward(request, response);
+            HttpSession session = request.getSession();
+            Account acc = (Account) session.getAttribute("account");
+            if(acc.getRole() == 1)
+                request.getRequestDispatcher("admin/orderDetail.jsp").forward(request, response);
+            else
+                request.getRequestDispatcher("client/orderDetail.jsp").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -29,8 +29,8 @@
 	</style>
 <body>
      <%@include file ="../common/header.jsp" %>
-	<div class="container">
-	<div class="text-center">
+	<div class="container content">
+	<div class="text-center mt-4">
 		<h1>ĐĂNG KÝ TÀI KHOẢN</h1>
 		<div class="red" id="error">
                     ${requestScope.error}
@@ -70,7 +70,7 @@
 				  <label for="agreeTerms" class="email"><a>Đồng ý với điều khoản của công ty</a><span class="red">*</span></label>
 				  <input type="checkbox" class="form-check-input" id="agreeTerms" name = "agreeTerms" required="required" onchange="checkAgreeTerms()">
 				</div>
-                                <input class="btn btn-primary form-control" type="submit" value="Đăng ký" id="submit" style="visibility: hidden;">
+                                <input class="btn btn-primary form-control disabled" type="submit" value="Đăng ký" id="submit" >
 		</form>
             </div>
         </div>                       
@@ -88,12 +88,14 @@
 			}
 	}
 
+        
 	function checkAgreeTerms(){
 		agreeTerms = document.getElementById("agreeTerms");
+                const btnTerm = document.querySelector("#submit");
 		if(agreeTerms.checked == true)
-			document.getElementById("submit").style.visibility="visible";
+			btnTerm.classList.remove('disabled');
 		else{
-			document.getElementById("submit").style.visibility="hidden";
+			btnTerm.classList.add('disabled');
 		}
 			
 	}
