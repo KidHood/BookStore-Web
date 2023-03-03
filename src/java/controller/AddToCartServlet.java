@@ -62,6 +62,7 @@ public class AddToCartServlet extends HttpServlet {
                 }
             }
             //roi khoi trang nay luu cart vao session
+            session.setAttribute("numProCart", cart.keySet().size());
             session.setAttribute("cart", cart);
             request.setAttribute("MSG", "added");
             request.getRequestDispatcher("/main-controller?action=home&numberpage=1").forward(request, response);

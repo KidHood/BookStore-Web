@@ -13,7 +13,7 @@
 <c:set var="searchBy" value="${requestScope.keyword}" />
 
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid"><!-- main-controller?action=search&txtsearch=&searchby=byname -->
 			<a class="navbar-brand" href="${url}/main-controller?action=home&numberpage=1"> 
                            <img
@@ -53,9 +53,15 @@
                                             <option value="bycategories" ${searchBy == 'bycategories'?"selected='selected'":""}>By categories</option>
                                         </select>
 					<button class="btn btn-success me-2" type="submit">Tìm</button>
-                                </form>
-                                        <span class="material-symbols-outlined me-2"><a class="btn" href="${url}/main-controller?action=view-cart">shopping_cart</a></span>
-                                        <c:set var="acc" value="${sessionScope.account}" />
+                                    </form>
+                                        <div class="contain-icon-cart me-2  rounded-circle">
+                                            <span class="material-symbols-outlined  icon-cart "><a class="" href="${url}/main-controller?action=view-cart">shopping_cart</a></span>
+                                            <c:set var="numProCar" value="${sessionScope.numProCart}" />
+                                            <c:if test="${numProCar != null and numProCar > 0}" >
+                                            <div class="numPro rounded-circle bg-danger d-flex justify-content-center align-items-center">${numProCar}</div>
+                                            </c:if>
+                                        </div>
+                                            <c:set var="acc" value="${sessionScope.account}" />
                                         <c:if test="${acc == null}" >
 						<a class="btn btn-primary" style = "white-space: nowrap;" href="${url}/common/login.jsp">
 							Đăng nhập

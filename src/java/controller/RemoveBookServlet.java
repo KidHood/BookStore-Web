@@ -40,6 +40,7 @@ public class RemoveBookServlet extends HttpServlet {
             HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
             if(cart != null){
                 cart.remove(realId);
+                session.setAttribute("numProCart", cart.keySet().size());
                 session.setAttribute("cart", cart);
                 request.setAttribute("MSG", "Xóa đơn hàng thành công");
                 request.getRequestDispatcher("client/cart.jsp").forward(request, response);

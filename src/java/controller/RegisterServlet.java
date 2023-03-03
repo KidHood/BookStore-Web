@@ -35,6 +35,9 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            response.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html; charset=UTF-8");
             String user = request.getParameter("user");
             String password = request.getParameter("password");
             String comfirmPwd = request.getParameter("comfirmPwd");
@@ -56,9 +59,10 @@ public class RegisterServlet extends HttpServlet {
                     password = Encode.toSHA1(password);
                     boolean rs = accDAO.insert(new Account(0, user, password, fullname, 1, phone, 0));
                     if(rs)
-                        url="/client/registerSuccess.html";
+                        url="/client/registerSuccess.jsp";
                 }
             }
+            
             request.setAttribute("error", error);
             request.getRequestDispatcher(url).forward(request, response);
 

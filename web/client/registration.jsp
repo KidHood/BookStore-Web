@@ -62,7 +62,7 @@
 				</div>
                                 <div class="mb-3">
 				  <label for="fullName" class="fullName">Số điện thoại</label>
-                                  <input type="text" class="form-control" id="phone" placeholder="" name = "phone" value="${requestScope.phone}">
+                       z           <input type="text" class="form-control" id="phone" placeholder="" name = "phone" value="${requestScope.phone}">
 				</div>
 				
 			</div>
