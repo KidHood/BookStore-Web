@@ -8,6 +8,14 @@
         <filter-name>FilterOrderAdmin</filter-name>
         <filter-class>Filters.FilterOrderAdmin</filter-class>
     </filter>
+    <filter>
+        <filter-name>FilterChangeInfor</filter-name>
+        <filter-class>Filters.FilterChangeInfor</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterChangeInfor</filter-name>
+        <servlet-name>ChangeInforServlet</servlet-name>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>FilterOrderAdmin</filter-name>
         <servlet-name>UpdateOrderAdminServlet</servlet-name>

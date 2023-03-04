@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="d"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +20,12 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">   
+<link rel='stylesheet' id='roboto-subset.css-css'  href='https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5' type='text/css' media='all' />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />           
- <link href="./css/style.css" rel="stylesheet">
+ <link href="../css/style.css" rel="stylesheet">
+ <link href="<d:url value="../css/style_register.css" />" rel="stylesheet">
 </head>
 	<style>
 		.red{
@@ -30,53 +35,71 @@
 <body>
      <%@include file ="../common/header.jsp" %>
 	<div class="container content">
-	<div class="text-center mt-4">
-		<h1>ĐĂNG KÝ TÀI KHOẢN</h1>
-		<div class="red" id="error">
-                    ${requestScope.error}
-		</div>
-	</div>
-		<form class="form" action="${url}/main-controller" method="post">
-		<input type="hidden" name="action" value = "register"> 
-		<div class="row">
-			<div class="col-md-6">
-				<h3>Tài khoản</h3>
-				<div class="mb-3">
-				  <label for="user" class="user">Tên đăng nhập<span class = "red">*</span></label>
-                                  <input type="text" class="form-control" id="user" placeholder="" name ="user" required="required" value="${requestScope.user}">
-				</div>
-				<div class="mb-3">
-				  <label for="password" class="user">Mật khẩu<span class = "red">*</span></label>
-				  <input type="password" class="form-control" id="password" placeholder="" name ="password" required="required" onkeyup="checkPassword()">
-				</div>
-				<div class="mb-3">
-				  <label for="comfirmPwd" class="comfirmPwd">Nhập lại mật khẩu<span class = "red">*</span><span class="red" id="msg"></span></label>
-				  <input type="password" class="form-control" id="comfirmPwd" placeholder="" name="comfirmPwd" required="required" onkeyup="checkPassword()">
-				</div>
+            <section class="vh-100 bg-image"
+              style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+              <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                      <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                          <h2 class="text-uppercase text-center mb-5">Tạo tài khoản</h2>
+                          <div class="red" id="error">
+                            ${requestScope.error}
                         </div>
-                        <div class="col-md-6">
-				<h3>Thông tin khách hàng</h3>
-				<div class="mb-3">
-				  <label for="fullName" class="fullName">Họ và Tên</label>
-                                  <input type="text" class="form-control" id="fullName" placeholder="" name = "fullName" value="${requestScope.fullName}">
-				</div>
-                                <div class="mb-3">
-				  <label for="fullName" class="fullName">Số điện thoại</label>
-                       z           <input type="text" class="form-control" id="phone" placeholder="" name = "phone" value="${requestScope.phone}">
-				</div>
-				
-			</div>
-				<div class="mb-3">
-				  <label for="agreeTerms" class="email"><a>Đồng ý với điều khoản của công ty</a><span class="red">*</span></label>
-				  <input type="checkbox" class="form-check-input" id="agreeTerms" name = "agreeTerms" required="required" onchange="checkAgreeTerms()">
-				</div>
-                                <input class="btn btn-primary form-control disabled" type="submit" value="Đăng ký" id="submit" >
-		</form>
-            </div>
-        </div>                       
+                          <form class="form" action="${url}/main-controller" method="post">
+                            <input type="hidden" name="action" value = "register"> 
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form3Example1cg" class="form-control form-control-lg input-change "  name ="user" required="required" />
+                                <label class="form-label" for="form3Example1cg">Email của bạn</label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <input type="text" id="form3Example3cg" class="form-control form-control-lg input-change" name = "fullName" value="${requestScope.fullName}" />
+                              <label class="form-label" for="form3Example3cg">Tên của bạn</label>
+                            </div>
+                             <div class="form-outline mb-4">
+                              <input type="text" id="form3Example3cg" class="form-control form-control-lg input-change" name = "phone" value="${requestScope.phone}"  />
+                              <label class="form-label" for="form3Example3cg">Số điện thoại</label>
+                            </div>
+                            <div class="form-outline mb-4">
+                              <input type="password" id="password" class="form-control form-control-lg input-change" name ="password"  onkeyup="checkPassword()"/>
+                              <label class="form-label" for="form3Example4cg">Mật Khẩu <span class="red" id="msg"></span></label>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <input type="password" id="comfirmPwd" class="form-control form-control-lg input-change" name="comfirmPwd" onkeyup="checkPassword()" />
+                              <label class="form-label" for="form3Example4cdg">Mật khẩu nhập lại <span class="red" id="msg"></span></label>
+                            </div>
+
+                            <div class="form-check d-flex justify-content-center mb-5">
+                              <input class="form-check-input me-2" type="checkbox" value=""  id="agreeTerms" name = "agreeTerms" required="required" onchange="checkAgreeTerms()"/>
+                              <label class="form-check-label" for="form2Example3g">
+                                Đồng ý với điều khoản của công ty <a href="#!" class="text-body"><u>Điều khoản dịch vụ</u></a>
+                              </label>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                              <button 
+                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body disabled" type="submit" id="submit">Đăng ký</button>
+                            </div>
+
+                            <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản <a href="${url}/common/login.jsp"
+                                class="fw-bold text-body"><u>Đăng nhập đây</u></a></p>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+        </div>
       <%@include file ="../common/footer.jsp" %>
 </body>
 	<script type="text/javascript">
+        
 	function checkPassword(){
 			 password = document.getElementById("password").value;
 			 confirmpwd = document.getElementById("comfirmPwd").value;
@@ -99,5 +122,16 @@
 		}
 			
 	}
+        
+        document.querySelectorAll('.input-change').forEach((el =>{
+            el.oninput = (e) => {
+                if(e.target.value != ''){
+                    e.target.classList.add('active');
+                    console.log('dsfas');
+                } else {
+                    e.target.classList.remove('active');
+                }
+            }
+        }))
 	</script>
 </html>

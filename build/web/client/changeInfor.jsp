@@ -49,14 +49,14 @@
                     <div class="text-center"> <h3>Thông tin khách hàng</h3> </div>
 			<div class="col-md-6">
 				<div class="mb-3">
-				  <label for="fullName" class="fullName">Họ và Tên</label>
+				  <label for="fullName" class="fullName">Họ và Tên <span>${requestScope.fullname}</span></label>
 				  <input type="text" class="form-control" id="fullName" placeholder="" name = "fullName" value="${acc.fullname}">
 				</div>
                               
 			</div>
                         <div class="col-md-6">
                               <div class="mb-3">
-				  <label for="phoneNumber" class="phoneNumber">Điện thoại</label>
+                                  <label for="phoneNumber" class="phoneNumber">Điện thoại <span>${requestScope.phone}</span></label>
 				  <input type="tel" class="form-control" id="phoneNumber" name = "phoneNumber" value="${acc.phone}">
 				</div>
                         </div>

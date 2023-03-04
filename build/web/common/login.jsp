@@ -30,8 +30,8 @@
     <h1 class="h3 mb-3 fw-normal">ĐĂNG NHẬP</h1>
     <div class ="text-center"><span class="red">${requestScope.error}</span></div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="user" placeholder="Tên đăng nhập" name="user">
-      <label for="user">Tên đăng nhập</label>
+      <input type="text" class="form-control" id="user" placeholder="Nhập email" name="user">
+      <label for="user">Nhập email</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="password" placeholder="Mật khẩu" name="password">
