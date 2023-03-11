@@ -49,7 +49,7 @@
                             <form class="form-control" action="${url}/update-categories" >
                                  <label for="">Tên cate</label>
                                  <input class ="form-control"type="text" name="newcatename" required="required" name="newcatename" />
-                                <button class="btn btn-primary mt-2 text-center " value="addNew"  name="action">Thêm mới</button>
+                                <button class="btn btn-primary mt-2 text-center " value="addNew"  name="actionAdmin">Thêm mới</button>
                             </form>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                                     <td><input class="form-control" type ="text" value="${listCata.get(id)}" name="catename"/></td>
                                     <td>${listNumBook.get(id)}</td>
                                     <td>
-                                        <button class="btn btn-success" type="submit" value="update" name="action">Cập nhật</button>
+                                        <button class="btn btn-success" type="submit" value="update" name="actionAdmin">Cập nhật</button>
                                     </td>
                                 </tr>
                                 </form>

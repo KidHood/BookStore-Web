@@ -13,7 +13,7 @@
 <c:set var="searchBy" value="${requestScope.keyword}" />
 
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg  ">
 		<div class="container-fluid"><!-- main-controller?action=search&txtsearch=&searchby=byname -->
 			<a class="navbar-brand" href="${url}/main-controller?action=home&numberpage=1"> 
                            <img
@@ -25,11 +25,9 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#">Trang chủ</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Combo
+			<div class="collapse navbar-collapse fs-4" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0  ">
+					<li class="nav-item "><a class="nav-link" href="#">Combo
 							giảm giá</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" role="button"
@@ -43,7 +41,7 @@
 					<li class="nav-item"><a class="nav-link disabled">Hết hàng</a>
 					</li>
 				</ul>
-                                <div class ="d-flex">
+                                <div class ="d-flex ">
                                     <form class="d-flex" role="search" action="${url}/main-controller" method="get">
                                     <input type="hidden" name="action" value ="search"> 
 					<input class="form-control me-2" type="search"
@@ -52,7 +50,7 @@
                                             <option value="byname" ${searchBy == 'byname'?"selected='selected'":""}>By name</option>
                                             <option value="bycategories" ${searchBy == 'bycategories'?"selected='selected'":""}>By categories</option>
                                         </select>
-					<button class="btn btn-success me-2" type="submit">Tìm</button>
+					<button class="btn btn-outline-primary me-2" type="submit">Tìm</button>
                                     </form>
                                         <div class="contain-icon-cart me-2  rounded-circle">
                                             <span class="material-symbols-outlined  icon-cart "><a class="" href="${url}/main-controller?action=view-cart">shopping_cart</a></span>

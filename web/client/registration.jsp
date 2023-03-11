@@ -34,37 +34,37 @@
 	</style>
 <body>
      <%@include file ="../common/header.jsp" %>
-	<div class="container content">
+	<div class=" content">
             <section class="vh-100 bg-image"
-              style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-              <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+              style="background-image: url('../img/backgroud/backgroud_admin2.png');">
+              <div class="mask d-flex align-items-center h-100 gradient-custom-3  mt-4">
                 <div class="container h-100">
                   <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                       <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                           <h2 class="text-uppercase text-center mb-5">Tạo tài khoản</h2>
-                          <div class="red" id="error">
+                          <div class="red text-center" id="error">
                             ${requestScope.error}
-                        </div>
+                            </div>
                           <form class="form" action="${url}/main-controller" method="post">
                             <input type="hidden" name="action" value = "register"> 
                             <div class="form-outline mb-4">
-                                <input type="email" id="form3Example1cg" class="form-control form-control-lg input-change "  name ="user" required="required" />
-                                <label class="form-label" for="form3Example1cg">Email của bạn</label>
+                                <input type="email" id="form3Example1cg" class="form-control form-control-lg input-change "  name ="user" required="required" value="${requestScope.txtemail}" />
+                                <label class="form-label" for="form3Example1cg">Email của bạn <span class="red">${requestScope.email}</span></label>
                             </div>
 
                             <div class="form-outline mb-4">
-                              <input type="text" id="form3Example3cg" class="form-control form-control-lg input-change" name = "fullName" value="${requestScope.fullName}" />
+                              <input type="text" id="form3Example2cg" class="form-control form-control-lg input-change" name = "fullName" value="${requestScope.txtname}" />
                               <label class="form-label" for="form3Example3cg">Tên của bạn</label>
                             </div>
                              <div class="form-outline mb-4">
-                              <input type="text" id="form3Example3cg" class="form-control form-control-lg input-change" name = "phone" value="${requestScope.phone}"  />
-                              <label class="form-label" for="form3Example3cg">Số điện thoại</label>
+                              <input type="text" id="form3Example3cg" class="form-control form-control-lg input-change" name = "phone" value="${requestScope.txtphone}"  />
+                              <label class="form-label" for="form3Example3cg">Số điện thoại <span class="red">${requestScope.phone}</span></label>
                             </div>
                             <div class="form-outline mb-4">
                               <input type="password" id="password" class="form-control form-control-lg input-change" name ="password"  onkeyup="checkPassword()"/>
-                              <label class="form-label" for="form3Example4cg">Mật Khẩu <span class="red" id="msg"></span></label>
+                              <label class="form-label" for="form3Example4cg">Mật Khẩu <span class="red" id="msg"></span><span class="red">${requestScope.password}</span></label>
                             </div>
 
                             <div class="form-outline mb-4">
@@ -81,7 +81,7 @@
 
                             <div class="d-flex justify-content-center">
                               <button 
-                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body disabled" type="submit" id="submit">Đăng ký</button>
+                                class="btn btn-primary btn-block btn-lg  disabled" type="submit" id="submit">Đăng ký</button>
                             </div>
 
                             <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản <a href="${url}/common/login.jsp"
@@ -123,15 +123,26 @@
 			
 	}
         
-        document.querySelectorAll('.input-change').forEach((el =>{
+        if(${requestScope.txtemail != null}){
+            document.getElementById("form3Example1cg").classList.add('active');
+        }
+        if(${requestScope.txtname != null}){
+            document.getElementById("form3Example2cg").classList.add('active');
+        }
+        if(${requestScope.txtphone != null}){
+            document.getElementById("form3Example3cg").classList.add('active');
+        }
+        var inputItems = document.querySelectorAll('.input-change').forEach((el =>{
             el.oninput = (e) => {
                 if(e.target.value != ''){
                     e.target.classList.add('active');
-                    console.log('dsfas');
                 } else {
                     e.target.classList.remove('active');
                 }
             }
+                
         }))
+        
+        
 	</script>
 </html>

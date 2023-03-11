@@ -5,8 +5,7 @@
  */
 package controller;
 
-import database.AccountDAO;
-import model.Account;
+import database.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,12 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Book;
 
 /**
  *
  * @author ADMIN
  */
-public class ViewAllAccount extends HttpServlet {
+public class ViewAllBookAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,14 +35,11 @@ public class ViewAllAccount extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            AccountDAO accDAO = new AccountDAO();
-            ArrayList<Account> lists = accDAO.selectAll();
-            String url = "admin/adminHome.jsp";
-            if(lists != null){
-                url="admin/account.jsp";
-                request.setAttribute("lists", lists);
-            }
-            request.getRequestDispatcher(url).forward(request, response);
+            BookDAO bookDAO = new BookDAO();
+            ArrayList<Book> lists = bookDAO.selectAll();
+            request.setAttribute("lists", lists);
+            request.getRequestDispatcher("admin/book.jsp").forward(request, response);
+           
         }
     }
 

@@ -1,6 +1,10 @@
 body{
     background-color: rgb(0,0,0,0.1);
 }
+.navbar{
+      background: #B4D0E2;
+      color: #006ee6;
+}
 .contain-icon-cart{
     position: relative;
     outline-style: solid;

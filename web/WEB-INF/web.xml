@@ -12,9 +12,45 @@
         <filter-name>FilterChangeInfor</filter-name>
         <filter-class>Filters.FilterChangeInfor</filter-class>
     </filter>
+    <filter>
+        <filter-name>FilterRegister</filter-name>
+        <filter-class>Filters.FilterRegister</filter-class>
+    </filter>
+    <filter>
+        <filter-name>FilterLogin</filter-name>
+        <filter-class>Filters.FilterLogin</filter-class>
+    </filter>
+    <filter>
+        <filter-name>FilterAllAccount</filter-name>
+        <filter-class>Filters.FilterAllAccount</filter-class>
+    </filter>
+    <filter>
+        <filter-name>FilterAllAccountRequest</filter-name>
+        <filter-class>FilterAllAccount.FilterAllAccountRequest</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterAllAccountRequest</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterAllAccount</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterLogin</filter-name>
+        <servlet-name>LoginServlet</servlet-name>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterRegister</filter-name>
+        <servlet-name>RegisterServlet</servlet-name>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>FilterChangeInfor</filter-name>
         <servlet-name>ChangeInforServlet</servlet-name>
+        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>FilterOrderAdmin</filter-name>
@@ -98,7 +134,7 @@
     </servlet>
     <servlet>
         <servlet-name>ViewAllAccount</servlet-name>
-        <servlet-class>controller.ViewAllAccount</servlet-class>
+        <servlet-class>controller.ViewAllAccountAdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeAccountStatus</servlet-name>
@@ -106,7 +142,7 @@
     </servlet>
     <servlet>
         <servlet-name>ViewAllBook</servlet-name>
-        <servlet-class>controller.ViewAllBook</servlet-class>
+        <servlet-class>controller.ViewAllBookAdmin</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeBookStatus</servlet-name>
@@ -127,6 +163,10 @@
     <servlet>
         <servlet-name>UpdateOrderAdminServlet</servlet-name>
         <servlet-class>controller.UpdateOrderAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>controller.AdminController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
@@ -231,6 +271,10 @@
     <servlet-mapping>
         <servlet-name>UpdateOrderAdminServlet</servlet-name>
         <url-pattern>/update-order-admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/admin-controller</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

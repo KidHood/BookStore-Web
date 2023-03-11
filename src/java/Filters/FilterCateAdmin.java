@@ -107,7 +107,7 @@ public class FilterCateAdmin implements Filter {
         
         Throwable problem = null;
         try {
-            String action = request.getParameter("action");
+            String action = request.getParameter("actionAdmin");
             BookDAO bookDAO = new BookDAO();
             if(action.equals("addNew")){
                  String catename = request.getParameter("newcatename");

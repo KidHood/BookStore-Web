@@ -61,7 +61,7 @@ public class FirstPage extends HttpServlet {
                 }
                 request.getRequestDispatcher("main-controller?action=search&txtsearch="+keyword+"&searchby=byname").forward(request, response);
             }else{
-                request.getRequestDispatcher("main-controller?action=search&txtsearch=&searchby=byname").forward(request, response);
+                request.getRequestDispatcher("main-controller?action=home&numberpage=1").forward(request, response);
             }
         }catch(Exception e){
             e.printStackTrace();

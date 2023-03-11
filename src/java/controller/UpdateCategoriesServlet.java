@@ -32,7 +32,7 @@ public class UpdateCategoriesServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String action = request.getParameter("action");
+           String action = request.getParameter("actionAdmin");
            
            BookDAO bookDAO = new BookDAO();
            String msg = "";

@@ -39,7 +39,7 @@ public class UpdateOrderAdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String action = request.getParameter("action");
+            String action = request.getParameter("actionAdmin");
             String msg = "";
             String url = "admin/order.jsp";
             OrderDAO orDAO = new OrderDAO();

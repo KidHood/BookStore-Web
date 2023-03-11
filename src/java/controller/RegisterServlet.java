@@ -45,25 +45,13 @@ public class RegisterServlet extends HttpServlet {
             String phone = request.getParameter("phone");
 
             String url = "login.jsp";
-            String error ="";
            
             AccountDAO accDAO = new AccountDAO();
-            if(accDAO.selectByUSer(user)){
-                error = "Email này đã được sử dụng";
-                url = "/client/registration.jsp";
-            }else{
-                if(!password.equals(comfirmPwd)){
-                    error = "Mật khẩu nhập lại không chính xác";
-                    url = "/client/registration.jsp";
-                }else{
-                    password = Encode.toSHA1(password);
-                    boolean rs = accDAO.insert(new Account(0, user, password, fullname, 1, phone, 0));
-                    if(rs)
-                        url="/client/registerSuccess.jsp";
-                }
-            }
+            password = Encode.toSHA1(password);
+            boolean rs = accDAO.insert(new Account(0, user, password, fullname, 1, phone, 0));
+            if(rs)
+                url="/client/registerSuccess.jsp";
             
-            request.setAttribute("error", error);
             request.getRequestDispatcher(url).forward(request, response);
 
         }catch(Exception e){

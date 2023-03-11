@@ -78,7 +78,7 @@
                                                    >Block</a>
                                             </c:when>
                                              <c:when test="${acc.status == 0}">
-                                                <a class="btn btn-danger" href="${url}/change-account-status?status=1&accid=${acc.accID}">
+                                                <a class="btn btn-success" href="${url}/change-account-status?status=1&accid=${acc.accID}">
                                                     Unblock</a>
                                             </c:when>
                                         </c:choose>

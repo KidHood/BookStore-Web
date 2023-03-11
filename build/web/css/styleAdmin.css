@@ -11,7 +11,10 @@ body, html {
 * {
   box-sizing: border-box;
 }
-
+.navbar{
+      background: #B4D0E2;
+      color: #006ee6;
+}
 .body{
     
 /*        filter: blur(8px);

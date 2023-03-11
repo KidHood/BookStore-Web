@@ -64,7 +64,7 @@
                             <input type="date" name="fromdate" value="${requestScope.fromdate}"/>
                             <label>Đến</label>
                             <input type="date" name="todate" value="${requestScope.todate}"/>
-                            <button class="btn btn-primary" name ="action" type="submit" value="filterdate">Lọc</button>
+                            <button class="btn btn-primary" name ="actionAdmin" type="submit" value="filterdate">Lọc</button>
                            </form>
                       </div>
                     <!-- khoi tao list acc de tao combobox-->
@@ -78,7 +78,7 @@
                                    data-toggle= "dropdown" placeholder = "Nhập email khách" value="${requestScope.email}">
                             <ul class ="dropdown-menu" id ="listItem" >
                                 <c:forEach items="${listAcc.keySet()}" var="accid">
-                                    <li> <a href="${url}/update-order-admin?action=filterusername&accid=${accid}&email=${listAcc.get(accid)}" class="link-item"> ${listAcc.get(accid)} </a> </li>
+                                    <li> <a href="${url}/update-order-admin?actionAdmin=filterusername&accid=${accid}&email=${listAcc.get(accid)}" class="link-item"> ${listAcc.get(accid)} </a> </li>
                                 </c:forEach>
                             </ul>
                         </div>
@@ -120,7 +120,7 @@
                                             </select>
                                         </td>
                                         <td>${listAcc.get(ord.accID) == null ?"Khách":listAcc.get(ord.accID)}</td>
-                                        <td><button class="btn btn-success" name ="action" value="update" type="submit">Cập nhật</button></td>
+                                        <td><button class="btn btn-success" name ="actionAdmin" value="update" type="submit">Cập nhật</button></td>
                                         <td><a href="${url}/view-order-detail?orderid=${ord.orderID}">Chi Tiết</a></td>
                                     </tr>
                                 </form>

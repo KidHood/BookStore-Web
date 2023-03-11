@@ -120,11 +120,10 @@ public class FilterChangeInfor implements Filter {
                  flag = false;
                 request.setAttribute("phone", "SĐT không đúng định dạng");
             }
-            if(flag)
-                chain.doFilter(request, response);
-            else{
+            if(!flag)
                 request.getRequestDispatcher("client/changeInfor.jsp").forward(request, response);
-            }
+            else
+                chain.doFilter(request, response); 
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then

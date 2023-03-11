@@ -107,7 +107,7 @@ public class FilterOrderAdmin implements Filter {
         
         Throwable problem = null;
         try {
-            String action = request.getParameter("action");
+            String action = request.getParameter("actionAdmin");
             boolean flag = true;
             if(action.equals("update")){
                 String orderDate = request.getParameter("orderdate");
