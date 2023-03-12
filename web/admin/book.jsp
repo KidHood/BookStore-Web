@@ -28,14 +28,14 @@
 </head>
     <body >
         <!-- bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white -->
+        <%@include file="headerAdminHome.jsp" %>
         <div class="body">
-            <div class="bg-text content">
-                <%@include file="headerAdminHome.jsp" %>
+            <div class="bg-text contentadmin">
                 <div class ="container">
                     <h1 class="text-center">Danh sách Sách</h1>
                     <h2 class="text-center text-danger">${requestScope.MSG}</h2>
                     <c:set var="list" value="${requestScope.lists}"/>
-                    <a class="btn btn-success ml-auto" href="${url}/admin-controller?action=ViewBookDetail">Them Moi San Pham</a>
+                    <a class="btn btn-success ml-auto" href="${url}/admin-controller?action=ViewBookDetail">Thêm Mới Sản Phẩm</a>
                     <c:if test="${list != null}">
                         <table class="table mt-4 text-white">
                             <tr class="">
@@ -81,5 +81,8 @@
                 </div>
             </div>  
         </div>
+        <!-- Footer -->
+        <%@include file ="../common/footer.jsp" %>
+	<!-- End footer -->  
     </body>
 </html>

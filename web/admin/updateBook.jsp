@@ -34,10 +34,9 @@
             <!-- header-->
             <%@include file="headerAdminHome.jsp" %>
             <!-- end header -->   
-             <div class=" bg-text">
+            <div class=" bg-text contentadmin" style="height: 700px;">
             <c:set var="book" value="${requestScope.bookDetail}" />
-            <div class="container mb-4 ">
-                <div class="col-lg-8 border p-3 main-section bg-white">
+                <div class="col-lg-8 border p-3 main-section  bg-white">
                     <div class="row hedding m-0 pl-3 pt-0 pb-3">
                         Chi tiết sản phẩm
                     </div>
@@ -110,7 +109,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
+        <!-- Footer -->
+        <%@include file ="../common/footer.jsp" %>
+	<!-- End footer --> 
     </body>
 </html>

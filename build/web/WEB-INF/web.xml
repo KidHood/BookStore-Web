@@ -28,6 +28,15 @@
         <filter-name>FilterAllAccountRequest</filter-name>
         <filter-class>Filters.FilterAllAccountRequest</filter-class>
     </filter>
+    <filter>
+        <filter-name>FilterCheckOut</filter-name>
+        <filter-class>Filters.FilterCheckOut</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterCheckOut</filter-name>
+        <servlet-name>CheckOutServlet</servlet-name>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>FilterAllAccountRequest</filter-name>
         <url-pattern>/*</url-pattern>

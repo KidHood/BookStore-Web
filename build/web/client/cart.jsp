@@ -32,11 +32,16 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />        
  <link href="../css/style.css" rel="stylesheet">
+ <style>
+     .red{
+         color: red;
+     }
+ </style>
     </head>
     <body>
          <%@include file ="../common/header.jsp" %>
          <c:set var="cart" value="${sessionScope.cart}" />
-            <c:if test="${cart != null}">
+            <c:if test="${cart != null && cart.size() > 0}">
             <div class="content"> 
                <h1 class="text-center">Đơn hàng của tôi</h1>   
                <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
@@ -75,12 +80,12 @@
                     <form action="${url}/main-controller" method="post">
                     <c:if test="${acc == null}" >
                         <div class="mb-3">
-                            <label for="user" class="user">Họ và tên<span class = "red">*</span></label>
-                            <input type="text" class="form-control" id="user" placeholder="" name ="fullname" required="required" >
+                            <label for="user" class="user">Họ và tên<span class = "red">* ${requestScope.namecheckout}</span> </label>
+                            <input type="text" class="form-control" id="user" placeholder="" name ="fullname" required="required" value="${requestScope.fullName}" >
                           </div>
                           <div class="mb-3">
-                            <label for="text" class="user">Số điện thoại<span class = "red">*</span></label>
-                            <input type="text" class="form-control" id="password" placeholder="" name ="phone" required="required" >
+                            <label for="text" class="user">Số điện thoại<span class = "red">* ${requestScope.phonecheckout}</span> </label>
+                            <input type="text" class="form-control" id="password" placeholder="" name ="phone" required="required" value="${requestScope.phone}" >
                           </div>
                     </c:if>
                         <input class="btn btn-primary" type="submit" value="Mua hàng">
@@ -90,7 +95,7 @@
             </div>
             </c:if>
             <c:if test="${cart == null or cart.size() == 0}" >
-            <p class="background-cart"></p>
+                <p class="background-cart"></p>
             </c:if>
         <div class="container-fluid">
            <%@include file ="../common/footer.jsp" %> 

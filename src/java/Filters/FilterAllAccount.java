@@ -116,6 +116,7 @@ public class FilterAllAccount implements Filter {
                 request.setAttribute("chan", "chan");
                 //check chan jsp
                 HttpServletRequest httpRequest = (HttpServletRequest) request;
+                HttpServletResponse httpResponse = (HttpServletResponse) response;
                 boolean flag1 = httpRequest.getRequestURI().startsWith("/BigAssignment_2/admin");
                 System.out.println("uri: " + httpRequest.getRequestURI());
                 //check chan servlet
@@ -136,13 +137,11 @@ public class FilterAllAccount implements Filter {
                     if(acc != null){
                         if(acc.getRole() == 1){
                         }else{
-                            request.setAttribute("error", "Bạn cần đăng nhập để thực hiện tính năng này");
-                            request.getRequestDispatcher("/common/login.jsp").forward(request, response);
+                            request.getRequestDispatcher("/error/error404.html").forward(request, response);
                            return;
                         }
                     }else{
-                        request.setAttribute("error", "Bạn cần đăng nhập để thực hiện tính năng này");
-                        request.getRequestDispatcher("/common/login.jsp").forward(request, response);
+                        request.getRequestDispatcher("/error/error404.html").forward(request, response);
                         return;
                     }
             }

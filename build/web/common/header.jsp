@@ -48,8 +48,8 @@
 					<input class="form-control me-2" type="search"
 						placeholder="Nội dung tìm kiếm" aria-label="Search" name="txtsearch" value="${keyword}">
                                         <select class="form-control me-2" name ="searchby">
-                                            <option value="byname" ${searchBy == 'byname'?"selected='selected'":""}>By name</option>
-                                            <option value="bycategories" ${searchBy == 'bycategories'?"selected='selected'":""}>By categories</option>
+                                            <option value="byname" ${requestScope.searchby == 'byname'?"selected='selected'":""}>Theo tên</option>
+                                            <option value="bycategories" ${requestScope.searchby == 'bycategories'?"selected='selected'":""}>Theo thể loại</option>
                                         </select>
 					<button class="btn btn-outline-primary me-2" type="submit">Tìm</button>
                                     </form>

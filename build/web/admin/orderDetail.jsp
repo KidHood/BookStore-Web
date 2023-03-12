@@ -31,11 +31,23 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />        
     <link href="<c:url value="/css/styleAdmin.css"/>" rel="stylesheet">
+    <style>
+       .total_money{
+           height: 40px;
+           margin-bottom: 4px;
+           
+       }
+       .text_total{
+           padding: 10px;
+           background-color: white;
+           color: #FF0000;
+       }
+   </style>
     </head>
     <body>
          <%@include file ="headerAdminHome.jsp" %>
-         <div class="text-white bg-text">
-        <div class="container content">
+        <div class="text-white bg-text">
+        <div class="container contentadmin">
              <h1 class="text-center">Chi tiết đơn hàng</h1>   
             <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
             <c:set var="accOrder" value="${requestScope.accOrder}" />
@@ -52,6 +64,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">TÊN</th>
+                            <th scope="col">IMG</th>
                             <th scope="col">MÔ TẢ</th>
                             <th scope="col">THỂ LOẠI</th>
                             <th scope="col">GIÁ</th>
@@ -67,6 +80,7 @@
                         <tr><form action="${url}/main-controller" method="post">
                             <td>${book.id}</td>
                             <td><a href="${url}/main-controller?action=view-book-detail&bid=${book.id}">${book.name}</a></td>
+                            <td><img src="${url}/productImage/${book.imgPath}" style="height: 200px"/></td>
                             <td><p>${book.decription}</p></td>
                             <td>${book.catename}</td>
                             <td>${book.price}</td>
@@ -77,12 +91,17 @@
                         </c:forEach>
                     </table>
 
-                    <h5>Total:${total} VND</h5>
+                     <div class="total_money">
+                        <h5 class="float-end text_total">Total:${total} VND</h5>
+                    </div>
                 </div>
              </c:if>
             <c:if test="${lists == null}" >
             <h1 class="text-center">Chi tiết đơn hàng đang được sử lí! Vui lòng quay lại sau</h1>
             </c:if>
-        </div>  
+        </div>
+        <!-- Footer -->
+        <%@include file ="../common/footer.jsp" %>
+	<!-- End footer --> 
     </body>
 </html>

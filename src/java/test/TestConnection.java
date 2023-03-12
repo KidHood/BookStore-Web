@@ -5,6 +5,8 @@
  */
 package test;
 
+import java.util.HashMap;
+
 
 
 /**
@@ -17,7 +19,7 @@ public class TestConnection {
         String phone  = "vanthong@07012002.com";
         System.out.println(phone.matches(pattern));
         String test = " ";
-        
+        HashMap in = new HashMap();
         
     }
 }

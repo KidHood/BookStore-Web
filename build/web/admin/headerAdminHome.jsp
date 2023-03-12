@@ -9,7 +9,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <c:set var="url" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"/>
-<div class="headerspace"> 
+<div class="headerspaceadmin"> 
 <nav class="navbar navbar-expand-lg ">
      <div class="container-fluid"><a href="${url}/admin/adminHome.jsp">
          <img src="<c:url value="/img/logo/logo_vanthong2.png"/>" ></a>

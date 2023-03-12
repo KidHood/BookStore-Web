@@ -27,14 +27,16 @@
  <link href="<c:url value="/css/styleAdmin.css"/>" rel="stylesheet">
 </head>
 <body >
+    <jsp:include page="headerAdminHome.jsp"/>
     <div class="body">
-        <div class="bg-text">
-            <jsp:include page="headerAdminHome.jsp"/>
+        <div class="bg-text contentadmin">
             <div class="row img">
-        <!--        <img class="col-md-12 img-responsive " src="<c:url value="${url}/img/backgroud/backgroud_admin.png"/>"
-                     style="filter: brightness(50%) contrast(80%);"/>-->
+           
             </div>
         </div>
     </div>
+        <!-- Footer -->
+        <%@include file ="../common/footer.jsp" %>
+        <!-- End footer -->
 </body>
 </html>

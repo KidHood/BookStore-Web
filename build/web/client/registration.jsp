@@ -24,8 +24,8 @@
 <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">   
 <link rel='stylesheet' id='roboto-subset.css-css'  href='https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5' type='text/css' media='all' />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />           
- <link href="../css/style.css" rel="stylesheet">
- <link href="<d:url value="../css/style_register.css" />" rel="stylesheet">
+ <link href="/css/style.css" rel="stylesheet">
+ <link href="<d:url value="/css/style_register.css" />" rel="stylesheet">
 </head>
 	<style>
 		.red{

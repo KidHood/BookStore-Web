@@ -27,9 +27,9 @@
  <link href="<c:url value="/css/styleAdmin.css"/>" rel="stylesheet">
 </head>
     <body >
+        <%@include file="headerAdminHome.jsp" %>
         <div class="body">
-            <div class="bg-text content">
-                <%@include file="headerAdminHome.jsp" %>
+            <div class="bg-text contentadmin">
                 <div class ="container">
                     <h1 class="text-center">Danh sách tài khoản</h1>
                     <h3 class="text-center text-danger">${requestScope.MSG}</h3>
@@ -90,5 +90,8 @@
                 </div>
             </div>
         </div>
+        <!-- Footer -->
+        <%@include file ="../common/footer.jsp" %>
+	<!-- End footer -->
     </body>
 </html>

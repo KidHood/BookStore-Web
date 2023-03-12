@@ -3,7 +3,7 @@ body{
 }
 
 .headerspace{
-    height: 58px;
+    height: 60px;
 }
 .navbar{
     top: 0;
@@ -55,7 +55,8 @@ body{
 }
 
 .content{
-    min-height: calc(100vh - 58px);
+    padding-top: 10px;
+    min-height: calc(100vh - 60px);
 }
 .footer {
     position: relative;

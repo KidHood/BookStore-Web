@@ -106,6 +106,9 @@
                             <a class="page-link" href="${url}/main-controller?action=home&numberpage=${numPage-1}">Trước</a>
                           </li>
                     </c:if>
+                    <c:if test="${numPage == 0 || numPage == null}">
+                        <c:set var="numPage" value="1" />
+                    </c:if>
                   <li class="page-item active">
                     <span class="page-link">
                       ${numPage}

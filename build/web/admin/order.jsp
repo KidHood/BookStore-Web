@@ -40,10 +40,10 @@
  </style>
 </head>
     <body >
+        <%@include file="headerAdminHome.jsp" %>
         <!-- bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white -->
         <div class="body">
-            <div class="bg-text content">
-                <%@include file="headerAdminHome.jsp" %>
+            <div class="bg-text contentadmin">
                 <div class ="container">
                     <h1 class="text-center">Danh sách mua hàng</h1>
                     <h2 class="text-center text-danger">${requestScope.MSG}</h2>
@@ -136,6 +136,9 @@
                 </div>
             </div>  
         </div>
+        <!-- Footer -->
+        <%@include file ="../common/footer.jsp" %>
+	<!-- End footer -->  
     </body>
     <script type="text/javascript">
         const filterDate = document.getElementById("filterdate");

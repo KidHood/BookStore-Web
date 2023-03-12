@@ -69,10 +69,12 @@
                                 <td>${ord.shipDate}</td>
                                 <td>${status[ord.status]}</td>
                                 <c:if test="${ord.getStatus() == 1}" >
-                                    <td><a href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=3">Hủy đơn hàng</a></td>
+                                    <td >
+                                        <a class=" btn btn-danger" href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=3">Hủy đơn hàng</a>
+                                    </td>
                                 </c:if>
                                 <c:if test="${ord.getStatus() == 3}" >
-                                    <td><a href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=1">Mua lại</a></td>
+                                    <td><a class=" btn btn-success" href="${url}/main-controller?action=change-status&orderid=${ord.getOrderID()}&status=1">Mua lại</a></td>
                                 </c:if>
                                 <c:if test="${ord.getStatus() == 2}" >
                                     <td></td>
