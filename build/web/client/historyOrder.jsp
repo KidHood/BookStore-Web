@@ -27,7 +27,8 @@
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />  
-   <link href="./css/style.css" rel="stylesheet">
+   <link href="../css/style.css" rel="stylesheet">
+<link href="../css/style_detail.css" rel="stylesheet">
     </head>
     <body>
         <%@include file ="../common/header.jsp" %>

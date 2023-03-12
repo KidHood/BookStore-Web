@@ -54,6 +54,7 @@ public class CheckOutServlet extends HttpServlet {
                     int kq = orDAO.insertOrders(accid, cart);
                     if(kq > 0){
                        session.removeAttribute("cart");
+                       session.removeAttribute("numProCart");
                     request.setAttribute("MSG", "Mua hàng thành công!");
                     request.getRequestDispatcher("client/cart.jsp").forward(request, response);
                     }

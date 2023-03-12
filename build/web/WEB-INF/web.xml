@@ -26,11 +26,12 @@
     </filter>
     <filter>
         <filter-name>FilterAllAccountRequest</filter-name>
-        <filter-class>FilterAllAccount.FilterAllAccountRequest</filter-class>
+        <filter-class>Filters.FilterAllAccountRequest</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FilterAllAccountRequest</filter-name>
         <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>FilterAllAccount</filter-name>
@@ -60,6 +61,10 @@
         <filter-name>FilterCateAdmin</filter-name>
         <servlet-name>UpdateCategoriesServlet</servlet-name>
     </filter-mapping>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>admin_resources.ContextInitActionAdmin</listener-class>
+    </listener>
     <servlet>
         <servlet-name>MainController</servlet-name>
         <servlet-class>controller.MainController</servlet-class>
@@ -118,7 +123,7 @@
     </servlet>
     <servlet>
         <servlet-name>FilterHistoryOrder</servlet-name>
-        <servlet-class>controller.FilterHistoryOrder</servlet-class>
+        <servlet-class>controller.FilterHistoryOrderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FirstPage</servlet-name>
@@ -138,18 +143,18 @@
     </servlet>
     <servlet>
         <servlet-name>ChangeAccountStatus</servlet-name>
-        <servlet-class>controller.ChangeAccountStatus</servlet-class>
+        <servlet-class>controller.ChangeAccountStatusAdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewAllBook</servlet-name>
-        <servlet-class>controller.ViewAllBookAdmin</servlet-class>
+        <servlet-class>controller.ViewAllBookAdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeBookStatus</servlet-name>
-        <servlet-class>controller.ChangeBookStatus</servlet-class>
+        <servlet-class>controller.ChangeBookStatusAdminServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateBook</servlet-name>
+        <servlet-name>UpdateBookAdminServlet</servlet-name>
         <servlet-class>controller.UpdateBookAdminServlet</servlet-class>
     </servlet>
     <servlet>
@@ -158,7 +163,7 @@
     </servlet>
     <servlet>
         <servlet-name>UpdateCategoriesServlet</servlet-name>
-        <servlet-class>controller.UpdateCategoriesServlet</servlet-class>
+        <servlet-class>controller.UpdateCategoriesAdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateOrderAdminServlet</servlet-name>
@@ -257,7 +262,7 @@
         <url-pattern>/change-book-status</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateBook</servlet-name>
+        <servlet-name>UpdateBookAdminServlet</servlet-name>
         <url-pattern>/update-book</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

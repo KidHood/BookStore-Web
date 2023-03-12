@@ -10,6 +10,7 @@
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,16 +30,25 @@
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />        
-   <link href="./css/style.css" rel="stylesheet">
+    <link href="<c:url value="/css/styleAdmin.css"/>" rel="stylesheet">
     </head>
     <body>
          <%@include file ="headerAdminHome.jsp" %>
-        <h1 class="text-center">Chi tiết đơn hàng</h1>   
-        <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
+         <div class="text-white bg-text">
+        <div class="container content">
+             <h1 class="text-center">Chi tiết đơn hàng</h1>   
+            <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
+            <c:set var="accOrder" value="${requestScope.accOrder}" />
             <c:set var="lists" value="${requestScope.lists}" />
             <c:if test="${lists != null}" >
-                <div class="container">
-                    <table class="table table-striped">
+                    <c:if test="${accOrder != null}" >
+                        <div>
+                            <p><Strong>Email:</Strong> ${accOrder.email}</p>
+                            <p><Strong>Tên:</Strong> ${accOrder.fullname}</p>
+                            <p><Strong>SĐT:</Strong> ${accOrder.phone}</p>
+                        </div>
+                    </c:if>
+                    <table class="table">
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">TÊN</th>
@@ -66,12 +76,13 @@
                         </tr>
                         </c:forEach>
                     </table>
-                        
+
                     <h5>Total:${total} VND</h5>
                 </div>
              </c:if>
             <c:if test="${lists == null}" >
             <h1 class="text-center">Chi tiết đơn hàng đang được sử lí! Vui lòng quay lại sau</h1>
             </c:if>
+        </div>  
     </body>
 </html>

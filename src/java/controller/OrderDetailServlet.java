@@ -52,9 +52,13 @@ public class OrderDetailServlet extends HttpServlet {
             }
             HttpSession session = request.getSession();
             Account acc = (Account) session.getAttribute("account");
-            if(acc.getRole() == 1)
+            if(acc.getRole() == 1){
+                String email = request.getParameter("email");
+                AccountDAO acc_DAO = new AccountDAO();
+                Account accOrder = acc_DAO.selectAccByEmail(email);
+                request.setAttribute("accOrder", accOrder);
                 request.getRequestDispatcher("admin/orderDetail.jsp").forward(request, response);
-            else
+            }else
                 request.getRequestDispatcher("client/orderDetail.jsp").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();

@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashMap;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -112,23 +114,33 @@ public class FilterAllAccount implements Filter {
         try {
             if(request.getAttribute("chan") == null){
                 request.setAttribute("chan", "chan");
+                //check chan jsp
                 HttpServletRequest httpRequest = (HttpServletRequest) request;
                 boolean flag1 = httpRequest.getRequestURI().startsWith("/BigAssignment_2/admin");
-                System.out.println("uri" + httpRequest.getRequestURI());
-                if(flag1){
-                    System.out.println("here flag1");
+                System.out.println("uri: " + httpRequest.getRequestURI());
+                //check chan servlet
+                ServletContext context = httpRequest.getServletContext();
+                HashMap<String, String> map = (HashMap) context.getAttribute("mapAdminAction");
+                String url = httpRequest.getRequestURI().replace(httpRequest.getContextPath(), "");
+                boolean flag2 = false;
+                for(String urlItem : map.values()){
+                    if(urlItem.equals(url)){
+                        flag2 = true;
+                        System.out.println("no co nhay vo chan servlet");
+                    }
+                }
+                
+                if(flag1 || flag2){
                     HttpSession session = httpRequest.getSession(true);
                     Account acc = (Account) session.getAttribute("account");
                     if(acc != null){
                         if(acc.getRole() == 1){
-                            System.out.println(acc.getRole() + "acc");
                         }else{
                             request.setAttribute("error", "Bạn cần đăng nhập để thực hiện tính năng này");
                             request.getRequestDispatcher("/common/login.jsp").forward(request, response);
                            return;
                         }
                     }else{
-                        System.out.println("Nhay vo day ne");
                         request.setAttribute("error", "Bạn cần đăng nhập để thực hiện tính năng này");
                         request.getRequestDispatcher("/common/login.jsp").forward(request, response);
                         return;

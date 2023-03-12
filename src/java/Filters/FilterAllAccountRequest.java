@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FilterAllAccount;
+package Filters;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -113,7 +113,9 @@ public class FilterAllAccountRequest implements Filter {
             boolean flag = httpRequest.getRequestURI().startsWith("/BigAssignment_2/productImage");
             boolean flag2 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/img");
             boolean flag3 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/css");   
-            if(flag || flag2 || flag3){
+            boolean flag4 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/assets");   
+            boolean flag5 = httpRequest.getRequestURI().startsWith("/BigAssignment_2/error");
+            if(flag || flag2 || flag3 || flag4 || flag5){
                 chain.doFilter(request, response);
             }else{
                 uri = uri.replace(context, "");

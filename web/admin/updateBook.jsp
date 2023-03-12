@@ -30,11 +30,11 @@
  <link href="<c:url value="/css/style_detail.css"/>" rel="stylesheet">
     </head>
     <body >
-        <div class="body">
-        <div class="bg-text ">
+       
             <!-- header-->
             <%@include file="headerAdminHome.jsp" %>
             <!-- end header -->   
+             <div class=" bg-text">
             <c:set var="book" value="${requestScope.bookDetail}" />
             <div class="container mb-4 ">
                 <div class="col-lg-8 border p-3 main-section bg-white">
@@ -48,7 +48,7 @@
                         <div class="col-lg-8">
                             <div class="right-side-pro-detail border p-3 m-0">
                                 <div class="row">
-                                 <form action="${url}/update-book" method="post" enctype="multipart/form-data">   
+                                 <form action="${url}/admin-controller?action=UpdateBook" method="post" enctype="multipart/form-data">   
                                      <c:if test="${book == null }" >
                                          <input type ="hidden" name="newbook" value="yesa" />
                                      </c:if>
@@ -112,6 +112,5 @@
                 </div>
             </div>
         </div>
-        <div>    
     </body>
 </html>

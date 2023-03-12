@@ -22,7 +22,8 @@
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />           
- <link href="./css/style.css" rel="stylesheet">
+ <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
+ <link href="<c:url value="/css/style_detail.css"/>" rel="stylesheet">
 </head>
 	<style>
 		.red{
@@ -32,7 +33,7 @@
 <body>
      <%@include file ="../common/header.jsp" %>
         <c:if test="${acc == null}">
-	<h1>Bạn chưa đăng nhập vui lòng truy cập <a href="${url}/index.jsp">Trang chủ</a> để đăng nhập!</h1>
+	<h1>Bạn chưa đăng nhập vui lòng truy cập <a href="${url}/common/login.jsp">Đăng nhập</a> để đăng nhập!</h1>
         </c:if>
         
         <c:if test="${acc != null}">
@@ -63,8 +64,8 @@
                         <input type="submit" class="btn btn-primary" value="Lưu thông tin"/>
                 </div>
                 </form>
-	</div>
         </c:if>
+        </div>
        <%@include file ="../common/footer.jsp" %>
 </body>
 </html>

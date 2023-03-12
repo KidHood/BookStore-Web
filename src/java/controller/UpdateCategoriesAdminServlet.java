@@ -8,18 +8,16 @@ package controller;
 import database.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Book;
 
 /**
  *
  * @author ADMIN
  */
-public class ViewAllBookAdmin extends HttpServlet {
+public class UpdateCategoriesAdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,12 +32,40 @@ public class ViewAllBookAdmin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            BookDAO bookDAO = new BookDAO();
-            ArrayList<Book> lists = bookDAO.selectAll();
-            request.setAttribute("lists", lists);
-            request.getRequestDispatcher("admin/book.jsp").forward(request, response);
+           String action = request.getParameter("actionAdmin");
            
+           BookDAO bookDAO = new BookDAO();
+           String msg = "";
+           String url = "admin/categories.jsp";
+           
+           if(action.equals("addNew")){
+              String catename = request.getParameter("newcatename");
+                    //check xem coi co insert thanh cong khong
+                boolean check = bookDAO.insertCatename(catename);
+               if(check){
+                   msg = "Thêm mới thành công";
+               }else{
+                   msg = "Thêm mới thất bại";
+               }
+           }else if(action.equals("update")){
+               String id = request.getParameter("cateid");
+               String catename = request.getParameter("catename");
+               int cateId = 0;
+               try {
+                   cateId = Integer.parseInt(id.trim());
+                   boolean check = bookDAO.updateCategories(cateId, catename);
+                   if(check){
+                       msg = "Cập nhật thành công";
+                   }else{
+                       msg = "Cập nhật thất bại";
+                   }
+               } catch (Exception e) {
+               }
+               
+               
+           }
+            request.setAttribute("MSG", msg);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

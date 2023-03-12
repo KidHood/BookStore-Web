@@ -270,7 +270,6 @@ public class BookDAO implements DAOInterface<Book>{
         try{
            conn = JDBCUtils.makeConnection();
            if(conn != null){
-               System.out.println(t.getImgPath()+"day la image page in data base");
             String sql = "update Plants\n" +
                         "set PName = ?,\n" +
                         "price = ?,\n" +

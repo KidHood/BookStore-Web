@@ -34,49 +34,54 @@
     <body>
          <%@include file ="../common/header.jsp" %>
          <div class="content">
-            <h1 class="text-center">Chi tiết đơn hàng</h1>   
-            <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
-            <c:if test="${acc == null}" >
-            <h1 class="text-center">Vui lòng đăng nhập để xem chi tiết đơn hàng!</h1>
+            <c:if test="${acc == null}">
+                <h1>Bạn chưa đăng nhập vui lòng truy cập <a href="${url}/common/login.jsp">Đăng nhập</a> để đăng nhập!</h1>
             </c:if>
-            <c:if test="${acc != null}" >
-                <c:set var="lists" value="${requestScope.lists}" />
-                <c:if test="${lists != null}" >
-                    <div class="container">
-                        <table class="table table-striped">
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">TÊN</th>
-                                <th scope="col">MÔ TẢ</th>
-                                <th scope="col">THỂ LOẠI</th>
-                                <th scope="col">GIÁ</th>
-                                <th scope="col">SỐ LƯỢNG</th>
-                            </tr>
-                             <c:set var="total" value="0"/>
-                            <c:forEach items="${lists.keySet()}" var="id">
-                                <jsp:useBean id="boDAO" class="database.BookDAO" />
-                                <jsp:useBean id="boTemp" class="model.Book" />
-                                <jsp:setProperty name="boTemp" property="id" value="${id}"/>
-                                <c:set var="book" value="${boDAO.selectById(boTemp)}" />
-                                <c:set var="total" value="${total + (book.price * lists.get(id))}" />
-                            <tr><form action="${url}/main-controller" method="post">
-                                <td>${book.id}</td>
-                                <td><a href="${url}/main-controller?action=view-book-detail&bid=${book.id}">${book.name}</a></td>
-                                <td><p>${book.decription}</p></td>
-                                <td>${book.catename}</td>
-                                <td>${book.price}</td>
-                                <td>${lists.get(id)}</td>
-                                <input type="hidden" name="bookid" value="${book.id}">
-                            </form>
-                            </tr>
-                            </c:forEach>
-                        </table>
+            <c:if test="${acc != null}">
+                <h1 class="text-center">Chi tiết đơn hàng</h1>   
+                <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
+                <c:if test="${acc == null}" >
+                <h1 class="text-center">Vui lòng đăng nhập để xem chi tiết đơn hàng!</h1>
+                </c:if>
+                <c:if test="${acc != null}" >
+                    <c:set var="lists" value="${requestScope.lists}" />
+                    <c:if test="${lists != null}" >
+                        <div class="container">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">TÊN</th>
+                                    <th scope="col">MÔ TẢ</th>
+                                    <th scope="col">THỂ LOẠI</th>
+                                    <th scope="col">GIÁ</th>
+                                    <th scope="col">SỐ LƯỢNG</th>
+                                </tr>
+                                 <c:set var="total" value="0"/>
+                                <c:forEach items="${lists.keySet()}" var="id">
+                                    <jsp:useBean id="boDAO" class="database.BookDAO" />
+                                    <jsp:useBean id="boTemp" class="model.Book" />
+                                    <jsp:setProperty name="boTemp" property="id" value="${id}"/>
+                                    <c:set var="book" value="${boDAO.selectById(boTemp)}" />
+                                    <c:set var="total" value="${total + (book.price * lists.get(id))}" />
+                                <tr><form action="${url}/main-controller" method="post">
+                                    <td>${book.id}</td>
+                                    <td><a href="${url}/main-controller?action=view-book-detail&bid=${book.id}">${book.name}</a></td>
+                                    <td><p>${book.decription}</p></td>
+                                    <td>${book.catename}</td>
+                                    <td>${book.price}</td>
+                                    <td>${lists.get(id)}</td>
+                                    <input type="hidden" name="bookid" value="${book.id}">
+                                </form>
+                                </tr>
+                                </c:forEach>
+                            </table>
 
-                        <h5>Total:${total} VND</h5>
-                    </div>
-                 </c:if>
-                <c:if test="${lists == null}" >
-                <h1 class="text-center">Chi tiết đơn hàng đang được sử lí! Vui lòng quay lại sau</h1>
+                            <h5>Total:${total} VND</h5>
+                        </div>
+                     </c:if>
+                    <c:if test="${lists == null}" >
+                    <h1 class="text-center">Chi tiết đơn hàng đang được sử lí! Vui lòng quay lại sau</h1>
+                    </c:if>
                 </c:if>
             </c:if>
          </div>

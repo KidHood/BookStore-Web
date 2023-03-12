@@ -42,7 +42,7 @@
     <body >
         <!-- bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white -->
         <div class="body">
-            <div class="bg-text ">
+            <div class="bg-text content">
                 <%@include file="headerAdminHome.jsp" %>
                 <div class ="container">
                     <h1 class="text-center">Danh sách mua hàng</h1>
@@ -59,7 +59,8 @@
                              ${requestScope.action == "filterusername" ?"checked='checked'":""} />
                       
                       <div id="filter_date">
-                          <form action="${url}/update-order-admin" method="post">
+                          <form action="${url}/admin-controller" method="post">
+                            <input type="hidden" name="action" value="UpdateOrder" />
                             <label>Từ</label>
                             <input type="date" name="fromdate" value="${requestScope.fromdate}"/>
                             <label>Đến</label>
@@ -78,7 +79,7 @@
                                    data-toggle= "dropdown" placeholder = "Nhập email khách" value="${requestScope.email}">
                             <ul class ="dropdown-menu" id ="listItem" >
                                 <c:forEach items="${listAcc.keySet()}" var="accid">
-                                    <li> <a href="${url}/update-order-admin?actionAdmin=filterusername&accid=${accid}&email=${listAcc.get(accid)}" class="link-item"> ${listAcc.get(accid)} </a> </li>
+                                    <li> <a href="${url}/admin-controller?action=UpdateOrder&actionAdmin=filterusername&accid=${accid}&email=${listAcc.get(accid)}" class="link-item"> ${listAcc.get(accid)} </a> </li>
                                 </c:forEach>
                             </ul>
                         </div>
@@ -88,11 +89,15 @@
                   </div>
                   <!--end filter-->
                     <c:set var="listOrder" value="${requestScope.listOrder}" />
+                    <!-- khoi tao list acc de tao combobox-->
+                    <c:set var="listAllAcc" value="${accDAO.selectAllAccidEmail()}" />
+                    <!-- end tao list acc de tao combobox-->
                     <!--Lay list len khi ch filter-->
                     <c:if test="${listOrder == null}" >
                         <jsp:useBean id="orderDAO" class="database.OrderDAO" />
                         <c:set var="listOrder" value="${orderDAO.selectAll()}" />
                     </c:if>
+                    <!--Edn lay lít len khi ch filter-->
                     <c:if test="${listOrder != null}">
                         <table class="table mt-4 text-white">
                             <tr class="">
@@ -106,8 +111,9 @@
                             </tr>
                             <c:set var="status" value="${['','Đang xử lý','Thành công','Bị hủy']}" />
                             <c:forEach items="${listOrder}" var="ord" >
-                                <form action="${url}/update-order-admin" method="post">
-                                    <tr>
+                                <form action="${url}/admin-controller" method="post">
+                                    <input type="hidden" name="action" value="UpdateOrder" >
+                                       <tr>
                                         <td>${ord.orderID}</td>
                                         <input type ="hidden" name="orderid" value="${ord.orderID}" />
                                         <td>${ord.orderDate}</td>
@@ -119,9 +125,9 @@
                                                 <option value="3" ${ord.status == 3 ?"selected='selected'":""}>Bị hủy</option>
                                             </select>
                                         </td>
-                                        <td>${listAcc.get(ord.accID) == null ?"Khách":listAcc.get(ord.accID)}</td>
+                                        <td>${!listAllAcc.get(ord.accID).contains("@")?"Khách":listAllAcc.get(ord.accID)}</td>
                                         <td><button class="btn btn-success" name ="actionAdmin" value="update" type="submit">Cập nhật</button></td>
-                                        <td><a href="${url}/view-order-detail?orderid=${ord.orderID}">Chi Tiết</a></td>
+                                        <td><a href="${url}/admin-controller?action=ViewOrderDetail&email=${listAllAcc.get(ord.accID)}&orderid=${ord.orderID}">Chi Tiết</a></td>
                                     </tr>
                                 </form>
                             </c:forEach>

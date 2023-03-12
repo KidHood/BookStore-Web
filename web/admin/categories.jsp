@@ -34,7 +34,7 @@
     <body >
         <!-- bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white -->
         <div class="body">
-            <div class="bg-text ">
+            <div class="bg-text content">
                 <%@include file="headerAdminHome.jsp" %>
                 <div class ="container">
                     <h1 class="text-center">Danh sách thể loại</h1>
@@ -46,7 +46,8 @@
                     <!--Tao them moi an-->
                     <div class="mt-2 row" id="addNew">
                         <div class=" col-md-4 ">
-                            <form class="form-control" action="${url}/update-categories" >
+                            <form class="form-control" action="${url}/admin-controller" method="post">
+                                <input type="hidden" name="action" value="UpdateCategories" />
                                  <label for="">Tên cate</label>
                                  <input class ="form-control"type="text" name="newcatename" required="required" name="newcatename" />
                                 <button class="btn btn-primary mt-2 text-center " value="addNew"  name="actionAdmin">Thêm mới</button>
@@ -63,7 +64,8 @@
                                 <th scope="col">HÀNH ĐỘNG</th>
                             </tr>
                             <c:forEach items="${listCata.keySet()}" var="id" >
-                                <form action="${url}/update-categories">
+                                <form action="${url}/admin-controller" method="post">
+                                    <input type="hidden" name="action" value="UpdateCategories" />
                                 <tr>
                                     <td>${id}</td>
                                     <input type="hidden" name="cateid" value="${id}" />

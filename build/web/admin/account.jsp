@@ -28,7 +28,7 @@
 </head>
     <body >
         <div class="body">
-            <div class="bg-text ">
+            <div class="bg-text content">
                 <%@include file="headerAdminHome.jsp" %>
                 <div class ="container">
                     <h1 class="text-center">Danh sách tài khoản</h1>
@@ -74,11 +74,11 @@
                                     <td>
                                         <c:choose>
                                             <c:when test="${acc.status == 1}">
-                                                <a class="btn btn-danger " href="${url}/change-account-status?status=0&accid=${acc.accID}"
+                                                <a class="btn btn-danger " href="${url}/admin-controller?action=ChangeAccountStatus&status=0&accid=${acc.accID}"
                                                    >Block</a>
                                             </c:when>
                                              <c:when test="${acc.status == 0}">
-                                                <a class="btn btn-success" href="${url}/change-account-status?status=1&accid=${acc.accID}">
+                                                <a class="btn btn-success" href="${url}/admin-controller?action=ChangeAccountStatus&status=1&accid=${acc.accID}">
                                                     Unblock</a>
                                             </c:when>
                                         </c:choose>

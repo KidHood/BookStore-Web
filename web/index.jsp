@@ -29,7 +29,9 @@
     <jsp:include page="common/header.jsp"/>
     <c:set var="url" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"/>
 	<!-- End Navbar -->
+        <c:set var="list" value="${requestScope.list}" />
 	<!-- Page content -->
+        <c:if test="${list != null }" >
 	<div class="container mt-4">
 		<div class="row">
 			<!-- Slider and Products -->
@@ -72,7 +74,7 @@
                                 
 				<!-- Products -->
                                 <div class="row container-card" style="justify-content: center;">
-                                <c:set var="list" value="${requestScope.list}" />
+                                
                                 <c:if test="${list != null}"  >
                                     <c:forEach items="${list}" var ="book">
                                         <div class="card" style="width: 18rem;">
@@ -117,7 +119,10 @@
             </nav>
         </div>
          <!--end page number -->
-        
+        </c:if>
+        <c:if test="${list == null || list.size() == 0}" >
+            <div class="background-item"></div>
+        </c:if>
 	<!-- Footer -->
         <%@include file ="../common/footer.jsp" %>
 	<!-- End footer -->

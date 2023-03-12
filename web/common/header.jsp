@@ -13,6 +13,7 @@
 <c:set var="searchBy" value="${requestScope.keyword}" />
 
 	<!-- Navbar -->
+        <div class="headerspace">
 	<nav class="navbar navbar-expand-lg  ">
 		<div class="container-fluid"><!-- main-controller?action=search&txtsearch=&searchby=byname -->
 			<a class="navbar-brand" href="${url}/main-controller?action=home&numberpage=1"> 
@@ -25,7 +26,7 @@
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse fs-4" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse " id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0  ">
 					<li class="nav-item "><a class="nav-link" href="#">Combo
 							giảm giá</a></li>
@@ -85,3 +86,4 @@
 			</div>
 		</div>
 	</nav>
+        </div>

@@ -9,7 +9,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <c:set var="url" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"/>
- <nav class="navbar navbar-expand-lg ">
+<div class="headerspace"> 
+<nav class="navbar navbar-expand-lg ">
      <div class="container-fluid"><a href="${url}/admin/adminHome.jsp">
          <img src="<c:url value="/img/logo/logo_vanthong2.png"/>" ></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,13 +19,13 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link fs-3 text-dark" href="${url}/view-all-account">Manage Account</a>
+                      <a class="nav-link fs-3 text-dark" href="${url}/admin-controller?action=ViewAllAccount">Manage Account</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link fs-3 text-dark" href="${url}/admin/categories.jsp">Manage Catagories</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link fs-3 text-dark" href="${url}/view-all-book">Manage Book</a>
+                      <a class="nav-link fs-3 text-dark" href="${url}/admin-controller?action=ViewAllBook">Manage Book</a>
                     </li>
                      <li class="nav-item">
                       <a class="nav-link fs-3 text-dark" href="${url}/admin/order.jsp">Manage Order</a>
@@ -43,4 +44,4 @@
             </div>
      </div>
     </nav>
-  
+</div>

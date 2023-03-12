@@ -5,7 +5,7 @@
  */
 package controller;
 
-import database.BookDAO;
+import database.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-public class UpdateCategoriesServlet extends HttpServlet {
+public class ChangeAccountStatusAdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,38 +32,27 @@ public class UpdateCategoriesServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String action = request.getParameter("actionAdmin");
-           
-           BookDAO bookDAO = new BookDAO();
-           String msg = "";
-           String url = "admin/categories.jsp";
-           
-           if(action.equals("addNew")){
-              String catename = request.getParameter("newcatename");
-                    //check xem coi co insert thanh cong khong
-                boolean check = bookDAO.insertCatename(catename);
-               if(check){
-                   msg = "Thêm mới thành công";
-               }else{
-                   msg = "Thêm mới thất bại";
-               }
-           }else if(action.equals("update")){
-               String id = request.getParameter("cateid");
-               String catename = request.getParameter("catename");
-               int cateId = 0;
-               try {
-                   cateId = Integer.parseInt(id.trim());
-                   boolean check = bookDAO.updateCategories(cateId, catename);
-                   if(check){
-                       msg = "Cập nhật thành công";
-                   }else{
-                       msg = "Cập nhật thất bại";
-                   }
-               } catch (Exception e) {
-               }
-               
-               
-           }
+            /* TODO output your page here. You may use following sample code. */
+            String sta = request.getParameter("status");
+            String acc = request.getParameter("accid");
+            String msg = "";
+            String url = "admin/account.jsp";
+            
+            int status = 0;
+            int accId = 0;
+            try{
+                status = Integer.parseInt(sta.trim());
+                accId =  Integer.parseInt(acc.trim());
+            }catch(NumberFormatException e){
+                e.printStackTrace();
+            }
+            AccountDAO accDAO = new AccountDAO();
+            if(accDAO.updateStatus(status,accId )){
+                msg = "Cập nhật thành công";
+                url="view-all-account";
+            }else{
+                msg = "Cập nhật thất bại";
+            }
             request.setAttribute("MSG", msg);
             request.getRequestDispatcher(url).forward(request, response);
         }

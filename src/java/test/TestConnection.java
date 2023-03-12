@@ -16,6 +16,8 @@ public class TestConnection {
         String pattern = "\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b";
         String phone  = "vanthong@07012002.com";
         System.out.println(phone.matches(pattern));
+        String test = " ";
+        
         
     }
 }

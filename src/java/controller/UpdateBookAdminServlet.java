@@ -77,27 +77,22 @@ public class UpdateBookAdminServlet extends HttpServlet {
                             isAdd = false;
                             int realBookID = Integer.parseInt(item.getString().trim());
                             book = booDAO.selectById(new Book(realBookID));
-                            System.out.println(item.getString());
                         }
                     }
                 }
                 if(book != null){
                     if(item.getFieldName().equals("bookname")){
-                     System.out.println(item.getString());
                      book.setName(item.getString());
                      flag = true;
                     }else if(item.getFieldName().equals("price")){
                         int price = Integer.parseInt(item.getString().trim());
                         book.setPrice(price);
-                       System.out.println(item.getString());
                        flag = true;
                     }else if(item.getFieldName().equals("decription")){
                         book.setDecription(item.getString());
-                       System.out.println(item.getString());
                        flag = true;
                     }else if(item.getFieldName().equals("cateName")){
                        int cateID = booDAO.selectCateIdByCateName(item.getString().trim());
-                       System.out.println(cateID + "cateID");
                        book.setCateId(cateID);
                        flag = true;
                     }else if(item.getFieldName().equals("imgPath")){
@@ -112,7 +107,6 @@ public class UpdateBookAdminServlet extends HttpServlet {
                             String folder2 = ROOT_IMG + "/" + fileName;
                             File file = new File(folder1);
                             File file2 = new File(folder2);
-                            System.out.println("img name " + fileName);
                             book.setImgPath(fileName);
                             flag = true;
                             
@@ -125,13 +119,13 @@ public class UpdateBookAdminServlet extends HttpServlet {
         if(isAdd){
              book.setStatus(1);
              boolean temp = booDAO.insert(book);
-             System.out.println("Bo may insert");
+             System.out.println("Insert Book");
              if(!temp){
                  flag = false; 
              }
          }else{
              boolean temp = booDAO.update(book);
-             System.out.println("Bo may update");
+             System.out.println("Update book");
              if(!temp){
                  flag = false; 
              }

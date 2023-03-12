@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-public class ChangeBookStatus extends HttpServlet {
+public class ChangeBookStatusAdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

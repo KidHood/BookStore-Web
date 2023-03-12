@@ -72,6 +72,29 @@ public class AccountDAO implements DAOInterface<Account>{
         return result;
     }
     
+     public HashMap<Integer, String> selectAllAccidEmail() {
+        HashMap<Integer, String> result = null;
+        Connection conn = null;
+        try{
+            conn = JDBCUtils.makeConnection();
+            if(conn != null){
+                result = new HashMap<>();
+                String sql = "select accID,email from Accounts";
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+                    int accId = rs.getInt("accID");
+                    String email = rs.getString("email");
+                    result.put(accId, email);
+                }
+            }
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     @Override
     public Account selectById(Account t) {
         Connection conn = null;
@@ -126,6 +149,36 @@ public class AccountDAO implements DAOInterface<Account>{
             e.printStackTrace();
         } 
         return false;
+    }
+    
+     public Account selectAccByEmail(String emailUser) {
+        Connection conn = null;
+        Account acc = null;
+        try{
+           conn = JDBCUtils.makeConnection();
+           if(conn !=null){
+               String sql = "select accID,email,password,fullname,phone,status,role\n"
+                        +"from dbo.Accounts\n"
+                       +"where email = ?";
+               PreparedStatement pst = conn.prepareStatement(sql);
+               pst.setString(1, emailUser);
+               ResultSet rs = pst.executeQuery();
+               while(rs.next()){
+                   int accID = rs.getInt("accID");
+                   String email = rs.getString("email");
+                   String password = rs.getString("password");
+                   String fullname = rs.getString("fullname");
+                   String phone = rs.getString("phone");
+                   int status = rs.getInt("status");
+                   int role = rs.getInt("role");
+                   acc = new Account(accID, email, password, fullname, status, phone, role);;
+               }
+               conn.close();
+           }
+        }catch(Exception e){
+            e.printStackTrace();
+        } 
+        return acc;
     }
     
      public Account selectEmailToken(String email, String token) {
