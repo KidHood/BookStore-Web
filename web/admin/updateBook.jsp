@@ -34,7 +34,7 @@
             <!-- header-->
             <%@include file="headerAdminHome.jsp" %>
             <!-- end header -->   
-            <div class=" bg-text contentadmin" style="height: 700px;">
+            <div class=" bg-text contentadmin" style="min-height:  700px;">
             <c:set var="book" value="${requestScope.bookDetail}" />
                 <div class="col-lg-8 border p-3 main-section  bg-white">
                     <div class="row hedding m-0 pl-3 pt-0 pb-3">

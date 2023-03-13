@@ -57,6 +57,9 @@ public class CheckOutServlet extends HttpServlet {
                        session.removeAttribute("numProCart");
                     request.setAttribute("MSG", "Mua hàng thành công!");
                     request.getRequestDispatcher("client/cart.jsp").forward(request, response);
+                    }else{
+                         request.setAttribute("MSG", "Mua hàng thất bại!");
+                         request.getRequestDispatcher("client/cart.jsp").forward(request, response);
                     }
                 }
             }else{
@@ -71,6 +74,7 @@ public class CheckOutServlet extends HttpServlet {
                 //b6: xoa gio hang
                 if(rs > 0){
                 session.removeAttribute("cart");
+                session.removeAttribute("numProCart");
                 request.setAttribute("MSG", "Mua hàng thành công!");
                 request.getRequestDispatcher("client/cart.jsp").forward(request, response);
                 }

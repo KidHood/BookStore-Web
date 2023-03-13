@@ -61,7 +61,7 @@ public class ChangePwdServlet extends HttpServlet {
                             acc.setPassword(newPwd);
                             boolean rs = accDAO.updatePwd(acc);
                             if(rs){
-                                error="<h1 style='color:green;'>Thay đổi mật khẩu thành công!</h1>";
+                                error="<p style='color:green;'>Thay đổi mật khẩu thành công!</p>";
                             }else{
                                 error="Thay đổi mật khẩu không thành công";
                             }

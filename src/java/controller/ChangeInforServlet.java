@@ -52,9 +52,9 @@ public class ChangeInforServlet extends HttpServlet {
                 //luu xuong database
                 boolean rs = accDAO.updateInfor(acc);
                 if(rs){
-                    error="<h1 style='color:green;'>Thay đổi thông tin thành công!</h1>";
+                    error="<p style='color:green;'>Thay đổi thông tin thành công!</p>";
                 }else{
-                    error="<h2>Thay đổi thông tin thất bại</h2>";
+                    error="<p>Thay đổi thông tin thất bại</p>";
                 }
                 request.setAttribute("error", error);
                 request.getRequestDispatcher("/client/changeInfor.jsp").forward(request, response);

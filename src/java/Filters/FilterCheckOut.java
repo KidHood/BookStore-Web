@@ -15,6 +15,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import model.Account;
 
 /**
  *
@@ -106,26 +109,31 @@ public class FilterCheckOut implements Filter {
         
         Throwable problem = null;
         try {
-            String fullName = request.getParameter("fullname");
-            String phone = request.getParameter("phone");
-            request.setAttribute("fullName", fullName);
-            request.setAttribute("phone", phone);
-            boolean flag = false;
-            if(fullName.trim().isEmpty() ){
-                request.setAttribute("namecheckout", "Tên không thể để trống");
-                flag = true;
-            }else if(phone.trim().isEmpty() ){
-                request.setAttribute("phonecheckout", "SĐT không thể để trống");
-                flag = true;
-            }else if(!phone.trim().isEmpty()){
-                if(!phone.matches("^0\\d{9,10}")){
-                    request.setAttribute("phonecheckout", "SĐT không đúng định dạng");
+            HttpServletRequest httpRequest = (HttpServletRequest) request;
+            HttpSession session = httpRequest.getSession();
+            Account acc = (Account) session.getAttribute("account");
+            if(acc == null){
+                String fullName = request.getParameter("fullname");
+                String phone = request.getParameter("phone");
+                request.setAttribute("fullName", fullName);
+                request.setAttribute("phone", phone);
+                boolean flag = false;
+                if(fullName.trim().isEmpty() ){
+                    request.setAttribute("namecheckout", "Tên không thể để trống");
                     flag = true;
+                }else if(phone.trim().isEmpty() ){
+                    request.setAttribute("phonecheckout", "SĐT không thể để trống");
+                    flag = true;
+                }else if(!phone.trim().isEmpty()){
+                    if(!phone.matches("^0\\d{9,10}")){
+                        request.setAttribute("phonecheckout", "SĐT không đúng định dạng");
+                        flag = true;
+                    }
                 }
-            }
-            if(flag){
-                request.getRequestDispatcher("client/cart.jsp").forward(request, response);
-                return;
+                if(flag){
+                    request.getRequestDispatcher("client/cart.jsp").forward(request, response);
+                    return;
+                }
             }
             chain.doFilter(request, response);
         } catch (Throwable t) {

@@ -22,8 +22,11 @@
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />           
- <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
- <link href="<c:url value="/css/style_detail.css"/>" rel="stylesheet">
+<link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">   
+<link rel='stylesheet' id='roboto-subset.css-css'  href='https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5' type='text/css' media='all' />
+<link href="<c:url value="${url}/css/style.css"/>" rel="stylesheet">
+ <link href="<c:url value="${url}/css/style_detail.css"/>" rel="stylesheet">
+  <link href="<c:url value="${url}/css/style_register.css" />" rel="stylesheet">
 </head>
 	<style>
 		.red{
@@ -32,40 +35,60 @@
 	</style>
 <body>
      <%@include file ="../common/header.jsp" %>
-        <c:if test="${acc == null}">
+	<div class="container content">
+             <c:if test="${acc == null}">
 	<h1>Bạn chưa đăng nhập vui lòng truy cập <a href="${url}/common/login.jsp">Đăng nhập</a> để đăng nhập!</h1>
         </c:if>
-        
         <c:if test="${acc != null}">
-	<div class="container content">
 	<div class="text-center">
-		<h1>THAY ĐỔI THÔNG TIN</h1>
-		<div class="red" id="error">
-                    ${requestScope.error}
-		</div>
 	</div>
-		<form class="form" action="${url}/main-controller" method="post">
-		<input type="hidden" name="action" value = "change-infor"> 
-		<div class="row">
-                    <div class="text-center"> <h3>Thông tin khách hàng</h3> </div>
-			<div class="col-md-6">
-				<div class="mb-3">
-				  <label for="fullName" class="fullName">Họ và Tên <span class="red">${requestScope.fullname}</span></label>
-				  <input type="text" class="form-control" id="fullName" placeholder="" name = "fullName" value="${acc.fullname}">
-				</div>
-                              
-			</div>
-                        <div class="col-md-6">
-                              <div class="mb-3">
-                                  <label for="phoneNumber" class="phoneNumber">Điện thoại <span class="red">${requestScope.phone}</span></label>
-				  <input type="tel" class="form-control" id="phoneNumber" name = "phoneNumber" value="${acc.phone}">
-				</div>
+                <div class="mask d-flex align-items-center h-100 gradient-custom-3  mt-4">
+                <div class="container h-100">
+                  <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                      <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                          <h2 class="text-uppercase text-center mb-5">Đổi thông tin</h2>
+                          <div class="red text-center" id="error">
+                            ${requestScope.error}
+                            </div>
+                          <form class="form" action="${url}/main-controller" method="post">
+                            <input type="hidden" name="action" value = "change-infor"> 
+                            
+                            <div class="form-outline mb-4">
+                              <input type="text" id="form3Example2cg" class="form-control form-control-lg input-change" name = "fullName" value="${acc.fullname}" />
+                              <label class="form-label" for="form3Example3cg">Tên của bạn <span class="red">${requestScope.fullname}</span></label>
+                            </div>
+                             <div class="form-outline mb-4">
+                              <input type="text" id="form3Example3cg" class="form-control form-control-lg input-change" name = "phoneNumber" value="${acc.phone}"  />
+                              <label class="form-label" for="form3Example3cg">Số điện thoại <span class="red">${requestScope.phone}</span></label>
+                            </div>
+                            
+                            <div class="d-flex justify-content-center">
+                              <button 
+                                class="btn btn-primary btn-block btn-lg " type="submit" id="submit">Thay đổi</button>
+                            </div>
+
+                          </form>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Lưu thông tin"/>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                </form>
+              </div>
         </c:if>
         </div>
        <%@include file ="../common/footer.jsp" %>
+       <script src="<c:url value="${url}/js/jsFormRegister.js"/>"></script>
 </body>
+    <script type="text/javascript">
+        
+        if(${acc.fullname != null}){
+            document.getElementById("form3Example2cg").classList.add('active');
+        }
+        if(${acc.phone != null}){
+            document.getElementById("form3Example3cg").classList.add('active');
+        }
+        
+	</script>
 </html>

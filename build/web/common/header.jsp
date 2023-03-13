@@ -15,7 +15,7 @@
 	<!-- Navbar -->
         <div class="headerspace">
 	<nav class="navbar navbar-expand-lg  ">
-		<div class="container-fluid"><!-- main-controller?action=search&txtsearch=&searchby=byname -->
+		<div class="container-fluid">
 			<a class="navbar-brand" href="${url}/main-controller?action=home&numberpage=1"> 
                            <img
                            src="<c:url value="/img/logo/logo_vanthong.png"/>" alt="Logo" height="24">

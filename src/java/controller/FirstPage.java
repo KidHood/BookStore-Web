@@ -41,6 +41,7 @@ public class FirstPage extends HttpServlet {
                 String token = "";
                 String email = "";
                 String keyword = "";
+                String searchBy = "";
                 for(Cookie temp : c){
                     if(temp.getName().equals("email")){
                         email = temp.getValue();
@@ -48,6 +49,8 @@ public class FirstPage extends HttpServlet {
                         token = temp.getValue();
                     }else if(temp.getName().equals("topic")){
                         keyword = temp.getValue();
+                    }else if(temp.getName().equals("searchby")){
+                        searchBy = temp.getValue();
                     }
                 }
                 if(!token.isEmpty() && !email.isEmpty()){
@@ -56,10 +59,13 @@ public class FirstPage extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("account", acc);
                 }
-                if(!keyword.isEmpty()){
+                if(!keyword.isEmpty() ){
                     keyword = keyword.replaceAll("_", " ");
                 }
-                request.getRequestDispatcher("main-controller?action=search&txtsearch="+keyword+"&searchby=byname").forward(request, response);
+                if( searchBy.isEmpty()){
+                    searchBy = "byname";
+                }
+                request.getRequestDispatcher("main-controller?action=search&txtsearch="+keyword+"&searchby="+searchBy).forward(request, response);
             }else{
                 request.getRequestDispatcher("main-controller?action=home&numberpage=1").forward(request, response);
             }

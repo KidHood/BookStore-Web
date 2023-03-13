@@ -81,3 +81,12 @@ body, html {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: white;
 }
+.footer {
+    position: relative;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    width: 100%;
+    max-height: 120px;
+    background: #B4D0E2;
+    color: black;
+}

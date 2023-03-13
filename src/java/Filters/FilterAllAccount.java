@@ -5,6 +5,7 @@
  */
 package Filters;
 
+import database.AccountDAO;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -17,6 +18,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -117,6 +119,8 @@ public class FilterAllAccount implements Filter {
                 //check chan jsp
                 HttpServletRequest httpRequest = (HttpServletRequest) request;
                 HttpServletResponse httpResponse = (HttpServletResponse) response;
+                HttpSession session = httpRequest.getSession(true);
+                
                 boolean flag1 = httpRequest.getRequestURI().startsWith("/BigAssignment_2/admin");
                 System.out.println("uri: " + httpRequest.getRequestURI());
                 //check chan servlet
@@ -130,18 +134,44 @@ public class FilterAllAccount implements Filter {
                         System.out.println("no co nhay vo chan servlet");
                     }
                 }
+                Account acc = (Account) session.getAttribute("account");
+                //Add login cookies
+                if(acc != null){
+                    Cookie[] c = httpRequest.getCookies();
+                    if(c != null){
+                        String token = "";
+                        String email = "";
+                        for(Cookie temp : c){
+                            if(temp.getName().equals("email")){
+                                email = temp.getValue();
+                            }else if(temp.getName().equals("token")){
+                                token = temp.getValue();
+                            }
+                        }
+                        if(!token.isEmpty() && !email.isEmpty()){
+                            AccountDAO accDAO = new AccountDAO();
+                            Account accTemp = accDAO.selectEmailToken(email, token);
+                            if(accTemp != null){
+                                session.setAttribute("account", accTemp);
+                                System.out.println("add acc thanh cong");
+                            }
+                        }
+                    }
+                }
+                //End add login by cookies
                 
                 if(flag1 || flag2){
-                    HttpSession session = httpRequest.getSession(true);
-                    Account acc = (Account) session.getAttribute("account");
+                    
                     if(acc != null){
                         if(acc.getRole() == 1){
                         }else{
-                            request.getRequestDispatcher("/error/error404.html").forward(request, response);
+//                            request.getRequestDispatcher("/error/error404.html").forward(request, response);
+                            httpResponse.sendRedirect("/BigAssignment_2/error/error404.html");
                            return;
                         }
                     }else{
-                        request.getRequestDispatcher("/error/error404.html").forward(request, response);
+//                        request.getRequestDispatcher("/error/error404.html").forward(request, response);
+                        httpResponse.sendRedirect("/BigAssignment_2/error/error404.html");
                         return;
                     }
             }

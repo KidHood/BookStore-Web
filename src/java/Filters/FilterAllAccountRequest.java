@@ -113,9 +113,10 @@ public class FilterAllAccountRequest implements Filter {
             boolean flag = httpRequest.getRequestURI().startsWith("/BigAssignment_2/productImage");
             boolean flag2 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/img");
             boolean flag3 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/css");   
-            boolean flag4 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/assets");   
-            boolean flag5 = httpRequest.getRequestURI().startsWith("/BigAssignment_2/error");
-            if(flag || flag2 || flag3 || flag4 || flag5){
+            boolean flag4 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/assets"); 
+            boolean flag5 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/error"); 
+            boolean flag6 =  httpRequest.getRequestURI().startsWith("/BigAssignment_2/js"); 
+            if(flag || flag2 || flag3 || flag4 || flag5 || flag6){
                 chain.doFilter(request, response);
             }else{
                 uri = uri.replace(context, "");

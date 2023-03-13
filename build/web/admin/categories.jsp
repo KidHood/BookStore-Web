@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Tai Khoan</title>
+    <title>Quản lí thể loại</title>
         <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -24,7 +24,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
- <link href="<c:url value="/css/styleAdmin.css"/>" rel="stylesheet">
+ <link href="<c:url value="../css/styleAdmin.css"/>" rel="stylesheet">
   <style>
         #addNew{
             display:  none;

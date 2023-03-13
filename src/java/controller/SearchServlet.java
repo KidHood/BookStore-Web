@@ -52,10 +52,15 @@ public class SearchServlet extends HttpServlet {
             
             //cookie
             if(keyword != null && !keyword.isEmpty()){
-                keyword = keyword.replaceAll("\\s", "_");
-                Cookie c = new Cookie("topic", keyword);
-                c.setMaxAge(24*60*60);
-                response.addCookie(c);
+                if(! list.isEmpty() ){
+                    keyword = keyword.replaceAll("\\s", "_");
+                    Cookie c = new Cookie("topic", keyword);
+                    Cookie c2= new Cookie("searchby", searchBy);
+                    c.setMaxAge(24*60*60);
+                    c2.setMaxAge(24*60*60);
+                    response.addCookie(c);
+                    response.addCookie(c2);
+                }
             }
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }catch(Exception e){

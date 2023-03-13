@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Tai Khoan</title>
+    <title>Quản lí đơn hàng</title>
         <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -118,7 +118,12 @@
                                         <input type ="hidden" name="orderid" value="${ord.orderID}" />
                                         <td>${ord.orderDate}</td>
                                         <input type ="hidden" name="orderdate" value="${ord.orderDate}" />
+                                        <c:if test="${ord.status == 2 or ord.status == 3}" >
+                                        <td>${ord.shipDate}</td>
+                                        </c:if>
+                                        <c:if test="${ord.status == 1}" >
                                         <td><input type="date" value="${ord.shipDate}" name="shipdate"/></td>
+                                        </c:if>
                                         <td><select name="status">
                                                 <option value="1" ${ord.status == 1 ?"selected='selected'":""}>Đang sử lý</option>
                                                 <option value="2" ${ord.status == 2 ?"selected='selected'":""}>Thành công</option>

@@ -8,9 +8,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
- <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
-<style>
-</style>
+
 <footer class="footer">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#"

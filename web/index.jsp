@@ -127,7 +127,7 @@
             <div class="background-item"></div>
         </c:if>
 	<!-- Footer -->
-        <%@include file ="../common/footer.jsp" %>
+        <%@include file ="common/footer.jsp" %>
 	<!-- End footer -->
         <style>
             .footer{

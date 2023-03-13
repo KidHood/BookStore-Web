@@ -31,11 +31,21 @@
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />        
- <link href="../css/style.css" rel="stylesheet">
+ <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
  <style>
      .red{
          color: red;
      }
+     .total_money{
+           height: 40px;
+           margin-bottom: 0;
+       }
+       .text_total{
+           padding: 10px;
+           background-color: white;
+           color: #FF0000;
+            margin-bottom: 0;
+       }
  </style>
     </head>
     <body>
@@ -46,7 +56,8 @@
                <h1 class="text-center">Đơn hàng của tôi</h1>   
                <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
                 <div class="container">
-                    <table class="table table-striped">
+                    <table class="table  table-bordered table-dark ">
+                        <thead>
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">TÊN</th>
@@ -54,6 +65,7 @@
                             <th scope="col">SỐ LƯỢNG</th>
                             <th scope="col">CHỌN</th>
                         </tr>
+                        </thead>
                         <c:set var="total" value="0"/>
                         <c:forEach items="${cart.keySet()}" var="id">
                             <jsp:useBean id="boDAO" class="database.BookDAO" />
@@ -75,8 +87,9 @@
                         </tr>
                     </c:forEach>
                     </table>
-
-                    <h5>Total:${total} VND</h5>
+                       <div class="total_money">
+                           <h5 class="float-end text_total">Total:${total} VND</h5>
+                       </div>
                     <form action="${url}/main-controller" method="post">
                     <c:if test="${acc == null}" >
                         <div class="mb-3">
@@ -88,8 +101,8 @@
                             <input type="text" class="form-control" id="password" placeholder="" name ="phone" required="required" value="${requestScope.phone}" >
                           </div>
                     </c:if>
-                        <input class="btn btn-primary" type="submit" value="Mua hàng">
-                         <input type="hidden" name="action" value="checkout">
+                        <button class=" w-100 btn btn-primary" type="submit">Mua hàng</button> 
+                         <input type="hidden" name="action" value="checkout" />
                     </form>  
                 </div>
             </div>
@@ -97,9 +110,8 @@
             <c:if test="${cart == null or cart.size() == 0}" >
                 <p class="background-cart"></p>
             </c:if>
-        <div class="container-fluid">
-           <%@include file ="../common/footer.jsp" %> 
-        </div>
-        
+                <div class="mt-4">
+                    <%@include file ="../common/footer.jsp" %> 
+                </div>
     </body>
 </html>

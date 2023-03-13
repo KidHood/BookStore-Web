@@ -5,6 +5,7 @@
  */
 package controller;
 
+import database.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Account;
 
 /**
  *
@@ -34,6 +36,12 @@ public class LogoutServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
+            Account acc  = (Account) session.getAttribute("account");
+            AccountDAO acc_DAO = new AccountDAO();
+            boolean flag = acc_DAO.updateToken(acc, "");
+            if(flag){
+                System.out.println("log out success");
+            }
             session.invalidate();
             request.getRequestDispatcher("/main-controller?action=home&numberpage=1").forward(request, response);
         }catch(Exception e){

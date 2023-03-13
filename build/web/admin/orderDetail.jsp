@@ -81,7 +81,7 @@
                             <td>${book.id}</td>
                             <td><a href="${url}/main-controller?action=view-book-detail&bid=${book.id}">${book.name}</a></td>
                             <td><img src="${url}/productImage/${book.imgPath}" style="height: 200px"/></td>
-                            <td><p>${book.decription}</p></td>
+                            <td class="w-25 p-3"><p>${book.decription}</p></td>
                             <td>${book.catename}</td>
                             <td>${book.price}</td>
                             <td>${lists.get(id)}</td>

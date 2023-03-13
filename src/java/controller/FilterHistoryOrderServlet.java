@@ -47,8 +47,11 @@ public class FilterHistoryOrderServlet extends HttpServlet {
             String dateFrom = request.getParameter("datefrom");
             String dateTo = request.getParameter("dateto");
             Date dateFromTemp = null;
+            Date fromCheck = null;
+            Date toCheck = null;
             if(dateFrom != null && !dateFrom.equals("null")){
                 dateFromTemp = Date.valueOf(dateFrom);
+                fromCheck = dateFromTemp;
                 Calendar c = Calendar.getInstance(); 
                 c.setTime(dateFromTemp); 
                 c.add(Calendar.DATE, -1);
@@ -56,8 +59,10 @@ public class FilterHistoryOrderServlet extends HttpServlet {
             }
             
             Date dateToTemp = new Date(System.currentTimeMillis()+24*60);
+            toCheck = dateToTemp;
             if(dateTo != null && !dateTo.isEmpty()){
                 dateToTemp = Date.valueOf(dateTo);
+                toCheck = dateToTemp;
                 Calendar c = Calendar.getInstance(); 
                 c.setTime(dateToTemp); 
                 c.add(Calendar.DATE, 1);
@@ -66,9 +71,15 @@ public class FilterHistoryOrderServlet extends HttpServlet {
             
             Date dateFromReal = dateFromTemp;
             Date dateToReal = dateToTemp;
-            if(dateFromReal.after(dateToReal)){
+            if(fromCheck.after(toCheck)){
+                OrderDAO orDAO = new OrderDAO();
+                ArrayList<Order> lists = orDAO.selectAllByAccID(acc.getAccID());
                 request.setAttribute("MSG", "Ngày lọc sai!");
-            }else if (acc != null && dateFromReal != null){
+                request.setAttribute("dateFrom", dateFrom);
+                request.setAttribute("dateTo", dateTo);
+                request.setAttribute("historyorder", lists);
+            }else{ 
+                if (acc != null && dateFromReal != null){
                 OrderDAO orDAO = new OrderDAO();
                 ArrayList<Order> lists = orDAO.selectAllByAccID(acc.getAccID());
                 if(lists != null && lists.size() > 0){
@@ -78,6 +89,7 @@ public class FilterHistoryOrderServlet extends HttpServlet {
                     request.setAttribute("historyorder", listsReal);
                     request.setAttribute("dateFrom", dateFrom);
                     request.setAttribute("dateTo", dateTo);
+                }
                 }
             }
             request.getRequestDispatcher("client/historyOrder.jsp").forward(request, response);

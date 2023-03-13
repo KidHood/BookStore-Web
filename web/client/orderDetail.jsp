@@ -10,6 +10,7 @@
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +30,8 @@
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />        
-   <link href="./css/style.css" rel="stylesheet">
+ <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
+  <link href="<c:url value="/css/style_orderDetail.css"/>" rel="stylesheet">
    <style>
        .total_money{
            height: 40px;
@@ -59,16 +61,18 @@
                     <c:set var="lists" value="${requestScope.lists}" />
                     <c:if test="${lists != null}" >
                         <div class="container">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">TÊN</th>
-                                    <th scope="col">IMG</th> 
-                                    <th scope="col">MÔ TẢ</th>
-                                    <th scope="col">THỂ LOẠI</th>
-                                    <th scope="col">GIÁ</th>
-                                    <th scope="col">SỐ LƯỢNG</th>
-                                </tr>
+                            <table class="table table-striped table-dark">
+                                <thead  class="thead-dark"> 
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">TÊN</th>
+                                        <th scope="col">IMG</th> 
+                                        <th scope="col ">MÔ TẢ</th>
+                                        <th scope="col">THỂ LOẠI</th>
+                                        <th scope="col">GIÁ</th>
+                                        <th scope="col">SỐ LƯỢNG</th>
+                                    </tr>
+                                </thead>
                                  <c:set var="total" value="0"/>
                                 <c:forEach items="${lists.keySet()}" var="id">
                                     <jsp:useBean id="boDAO" class="database.BookDAO" />
@@ -80,7 +84,7 @@
                                     <td>${book.id}</td>
                                     <td><a href="${url}/main-controller?action=view-book-detail&bid=${book.id}">${book.name}</a></td>
                                     <td><img src="${url}/productImage/${book.imgPath}" style="height: 200px"/></td>
-                                    <td><p>${book.decription}</p></td>
+                                    <td class="w-25 p-3"><p>${book.decription}</p></td>
                                     <td>${book.catename}</td>
                                     <td>${book.price}</td>
                                     <td>${lists.get(id)}</td>
@@ -88,6 +92,7 @@
                                 </form>
                                 </tr>
                                 </c:forEach>
+                                
                             </table>
                             <div class="total_money">
                                 <h5 class="float-end text_total">Total:${total} VND</h5>

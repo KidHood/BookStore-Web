@@ -20,12 +20,11 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">   
 <link rel='stylesheet' id='roboto-subset.css-css'  href='https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5' type='text/css' media='all' />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />           
- <link href="/css/style.css" rel="stylesheet">
- <link href="<d:url value="/css/style_register.css" />" rel="stylesheet">
+ <link href="<d:url value="${url}/css/style.css" />" rel="stylesheet">
+ <link href="<d:url value="${url}/css/style_register.css" />" rel="stylesheet">
 </head>
 	<style>
 		.red{
@@ -36,7 +35,7 @@
      <%@include file ="../common/header.jsp" %>
 	<div class=" content">
             <section class="vh-100 bg-image"
-              style="background-image: url('../img/backgroud/backgroud_admin2.png');">
+                     style="background-image: url('<c:url value="${url}/img/backgroud/backgroud_admin2.png" />');">
               <div class="mask d-flex align-items-center h-100 gradient-custom-3  mt-4">
                 <div class="container h-100">
                   <div class="row d-flex justify-content-center align-items-center h-100">
@@ -97,32 +96,9 @@
             </section>
         </div>
       <%@include file ="../common/footer.jsp" %>
+      <script src="<c:url value="${url}/js/jsFormRegister.js"/>"></script>
 </body>
 	<script type="text/javascript">
-        
-	function checkPassword(){
-			 password = document.getElementById("password").value;
-			 confirmpwd = document.getElementById("comfirmPwd").value;
-			if(password != confirmpwd){
-				document.getElementById("msg").innerHTML = "Mật khẩu không khớp!";
-				return false;
-			}else{
-				document.getElementById("msg").innerHTML = "";
-			}
-	}
-
-        
-	function checkAgreeTerms(){
-		agreeTerms = document.getElementById("agreeTerms");
-                const btnTerm = document.querySelector("#submit");
-		if(agreeTerms.checked == true)
-			btnTerm.classList.remove('disabled');
-		else{
-			btnTerm.classList.add('disabled');
-		}
-			
-	}
-        
         if(${requestScope.txtemail != null}){
             document.getElementById("form3Example1cg").classList.add('active');
         }
@@ -132,17 +108,6 @@
         if(${requestScope.txtphone != null}){
             document.getElementById("form3Example3cg").classList.add('active');
         }
-        var inputItems = document.querySelectorAll('.input-change').forEach((el =>{
-            el.oninput = (e) => {
-                if(e.target.value != ''){
-                    e.target.classList.add('active');
-                } else {
-                    e.target.classList.remove('active');
-                }
-            }
-                
-        }))
-        
         
 	</script>
 </html>

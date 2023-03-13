@@ -27,6 +27,7 @@
         crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />           
  <link href="<c:url value="/css/style_detail.css"/>" rel="stylesheet">
+ <link href="<c:url value="/css/style.css"/>" rel="stylesheet"> 
     </head>
     <body>
 
@@ -35,7 +36,7 @@
         <!-- end header -->   
         <c:set var="book" value="${requestScope.bookDetail}" />
         <c:if test="${book != null}" >
-        <div class="container content">
+            <div class="container content">
             <div class="col-lg-8 border p-3 main-section bg-white">
                 <div class="row hedding m-0 pl-3 pt-0 pb-3">
                     Chi tiết sản phẩm
