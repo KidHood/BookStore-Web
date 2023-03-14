@@ -136,7 +136,7 @@ public class FilterAllAccount implements Filter {
                 }
                 Account acc = (Account) session.getAttribute("account");
                 //Add login cookies
-                if(acc != null){
+                if(acc == null){
                     Cookie[] c = httpRequest.getCookies();
                     if(c != null){
                         String token = "";

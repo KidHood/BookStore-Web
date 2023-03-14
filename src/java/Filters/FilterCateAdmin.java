@@ -114,27 +114,34 @@ public class FilterCateAdmin implements Filter {
                  if(catename == null || catename.trim().isEmpty()){
                      //check null rong
                      request.setAttribute("MSG", "Không thể để trống");
-                     request.getRequestDispatcher("admin/categories.jsp").forward(request, response);
+                     request.getRequestDispatcher("/admin-controller?action=ViewAllCategories").forward(request, response);
+                     return;
                  }else{
                       //check xem coi co cai ten nay ch
                     boolean check = bookDAO.selectCatename(catename);
                     if(check){
                         request.setAttribute("MSG", "Đã tồn tại thể loại này");
-                        request.getRequestDispatcher("admin/categories.jsp").forward(request, response);
-                    }else{
-                        chain.doFilter(request, response);
+                        request.getRequestDispatcher("/admin-controller?action=ViewAllCategories").forward(request, response);
+                        return;
                     }
                  }
             }else if(action.equals("update")){
                 String catename = request.getParameter("catename");
+                
                 if(catename == null || catename.trim().isEmpty()){
                     request.setAttribute("MSG", "Không thể để trống");
-                    request.getRequestDispatcher("admin/categories.jsp").forward(request, response);
+                    request.getRequestDispatcher("/admin-controller?action=ViewAllCategories").forward(request, response);
+                    return;
                 }else{
-                    chain.doFilter(request, response);
+                    boolean check = bookDAO.selectCatename(catename);
+                    if(check){
+                        request.setAttribute("MSG", "Đã tồn tại thể loại này");
+                        request.getRequestDispatcher("/admin-controller?action=ViewAllCategories").forward(request, response);
+                        return;
+                    }
                 }
             }
-            
+            chain.doFilter(request, response);
             
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,

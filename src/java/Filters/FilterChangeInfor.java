@@ -106,7 +106,6 @@ public class FilterChangeInfor implements Filter {
         
         Throwable problem = null;
         try {
-            System.out.println("co filter ne anh trai");
             boolean flag = true;
             String fullName = request.getParameter("fullName");
             String phone = request.getParameter("phoneNumber"); 

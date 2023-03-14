@@ -57,7 +57,7 @@ public class ViewBookDetail extends HttpServlet {
                 if(acc.getRole() == 0)
                     request.getRequestDispatcher("client/bookDetail.jsp").forward(request, response);
                 else if(acc.getRole() == 1){
-                   HashMap<Integer,String> list = boDAO.selectALlCateName();
+                    HashMap<Integer,String> list = boDAO.selectALlCateName();
                     request.setAttribute("listcate", list);
                     request.getRequestDispatcher("admin/updateBook.jsp").forward(request, response);
                 }

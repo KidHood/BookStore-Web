@@ -22,13 +22,13 @@
                       <a class="nav-link fs-3 text-dark" href="${url}/admin-controller?action=ViewAllAccount">Manage Account</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link fs-3 text-dark" href="${url}/admin/categories.jsp">Manage Catagories</a>
+                      <a class="nav-link fs-3 text-dark" href="${url}/admin-controller?action=ViewAllCategories">Manage Catagories</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link fs-3 text-dark" href="${url}/admin-controller?action=ViewAllBook">Manage Book</a>
                     </li>
                      <li class="nav-item">
-                      <a class="nav-link fs-3 text-dark" href="/BigAssignment_2/admin/order.jsp">Manage Order</a>
+                      <a class="nav-link fs-3 text-dark" href="${url}/admin-controller?action=ViewAllOrder">Manage Order</a>
                     </li>
                  </ul>
                 <div class="d-flex ms-auto">

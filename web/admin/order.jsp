@@ -76,7 +76,7 @@
                       <div id="filter_user_name">
                         <div class="dropdown">
                             <input name="email" class = "form-control dropdown-toggle" id = "listbox" type = "text"
-                                   data-toggle= "dropdown" placeholder = "Nhập email khách" value="${requestScope.email}">
+                                   data-toggle= "dropdown" placeholder = "Nhập email khách" value="${requestScope.email}" autocomplete="off"/>
                             <ul class ="dropdown-menu" id ="listItem" >
                                 <c:forEach items="${listAcc.keySet()}" var="accid">
                                     <li> <a href="${url}/admin-controller?action=UpdateOrder&actionAdmin=filterusername&accid=${accid}&email=${listAcc.get(accid)}" class="link-item"> ${listAcc.get(accid)} </a> </li>
@@ -92,12 +92,7 @@
                     <!-- khoi tao list acc de tao combobox-->
                     <c:set var="listAllAcc" value="${accDAO.selectAllAccidEmail()}" />
                     <!-- end tao list acc de tao combobox-->
-                    <!--Lay list len khi ch filter-->
-                    <c:if test="${listOrder == null}" >
-                        <jsp:useBean id="orderDAO" class="database.OrderDAO" />
-                        <c:set var="listOrder" value="${orderDAO.selectAll()}" />
-                    </c:if>
-                    <!--Edn lay lít len khi ch filter-->
+                    <c:set var="listOrder" value="${requestScope.listOrder}" />
                     <c:if test="${listOrder != null}">
                         <table class="table mt-4 text-white">
                             <tr class="">
@@ -120,6 +115,7 @@
                                         <input type ="hidden" name="orderdate" value="${ord.orderDate}" />
                                         <c:if test="${ord.status == 2 or ord.status == 3}" >
                                         <td>${ord.shipDate}</td>
+                                        <input type="hidden" value="${ord.shipDate}" name="shipdate"/>
                                         </c:if>
                                         <c:if test="${ord.status == 1}" >
                                         <td><input type="date" value="${ord.shipDate}" name="shipdate"/></td>

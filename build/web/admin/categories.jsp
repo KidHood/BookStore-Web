@@ -24,7 +24,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
 	integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
 	crossorigin="anonymous"></script>
- <link href="<c:url value="../css/styleAdmin.css"/>" rel="stylesheet">
+ <link href="<c:url value="/css/styleAdmin.css"/>" rel="stylesheet">
   <style>
         #addNew{
             display:  none;
@@ -39,9 +39,8 @@
                 <div class ="container">
                     <h1 class="text-center">Danh sách thể loại</h1>
                     <h2 class="text-center text-danger">${requestScope.MSG}</h2>
-                    <jsp:useBean id="bookDAO" class="database.BookDAO" />
-                    <c:set var="listCata" value="${bookDAO.selectALlCateName()}" />
-                    <c:set var="listNumBook" value="${bookDAO.selectNumBookEachCate()}" />
+                    <c:set var="listCata" value="${requestScope.listBook}" />
+                    <c:set var="listNumBook" value="${requestScope.listNumBook}" />
                     <button class="btn btn-success"  id="btnAddNew" onclick="showAddNew()">Thêm mới thể loại</button>
                     <!--Tao them moi an-->
                     <div class="mt-2 row" id="addNew">

@@ -51,10 +51,10 @@
     <body>
          <%@include file ="../common/header.jsp" %>
          <c:set var="cart" value="${sessionScope.cart}" />
+          <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
             <c:if test="${cart != null && cart.size() > 0}">
             <div class="content"> 
                <h1 class="text-center">Đơn hàng của tôi</h1>   
-               <div class ="text-center"><span style="color:green;">${requestScope.MSG}</span></div>
                 <div class="container">
                     <table class="table  table-bordered table-dark ">
                         <thead>

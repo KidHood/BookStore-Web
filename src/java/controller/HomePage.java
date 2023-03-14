@@ -60,6 +60,7 @@ public class HomePage extends HttpServlet {
                     int maxProduct = numPage*NUM_PRODUCT;
                     if(maxProduct >= list.size()){
                         maxProduct = list.size();
+                        request.setAttribute("ENDPAGE", "YES");
                     }
                     listTemp = list.subList(minProduct, maxProduct);
                 } catch (Exception e) {

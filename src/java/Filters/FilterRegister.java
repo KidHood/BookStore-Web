@@ -131,6 +131,9 @@ public class FilterRegister implements Filter {
             }else if(!password.equals(confirmPwd)){
                  flag = false;
                     request.setAttribute("password", "Mật khẩu nhập lại không chính xác");
+            }else if(password.length() < 8){
+                    flag = false;
+                    request.setAttribute("password", "Mật khẩu phải từ 8 ký tự");
             }
             if(!flag){
                 request.setAttribute("txtemail", email);

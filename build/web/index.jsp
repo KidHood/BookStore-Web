@@ -114,10 +114,12 @@
                       ${numPage}
                     </span>
                   </li>
-                  <li class="page-item"><a class="page-link" href="${url}/main-controller?action=home&numberpage=${(numPage+1)}">
-                          ${(numPage + 1) }</a></li>
-                  <li class="page-item"><a class="page-link" href="${url}/main-controller?action=home&numberpage=${(numPage+2)}">
+                  <c:if test="${requestScope.ENDPAGE == null}" >
+                    <li class="page-item"><a class="page-link" href="${url}/main-controller?action=home&numberpage=${(numPage+1)}">
+                            ${(numPage + 1) }</a></li>
+                    <li class="page-item"><a class="page-link" href="${url}/main-controller?action=home&numberpage=${(numPage+2)}">
                           ${(numPage + 2)}</a></li>
+                  </c:if>
                 </ul>
             </nav>
         </div>

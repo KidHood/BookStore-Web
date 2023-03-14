@@ -65,18 +65,23 @@ public class CheckOutServlet extends HttpServlet {
             }else{
                 //b2: lay user id cua ng login
                 int accId = acc.getAccID();
-                HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
-                //b3: chen 1 dong recore vao bang order
-                //b4: lay order id cuar b3 
-                //b5: duyet cai gio hang de chen order detail
-                OrderDAO orDAO = new OrderDAO();
-                int rs = orDAO.insertOrders(accId, cart);
-                //b6: xoa gio hang
-                if(rs > 0){
-                session.removeAttribute("cart");
-                session.removeAttribute("numProCart");
-                request.setAttribute("MSG", "Mua hàng thành công!");
-                request.getRequestDispatcher("client/cart.jsp").forward(request, response);
+                if(acc.getFullname().isEmpty() || acc.getPhone().isEmpty()){
+                    request.setAttribute("error", "Vui lòng cập nhật thông tin để mua hàng!");
+                    request.getRequestDispatcher("client/changeInfor.jsp").forward(request, response);
+                }else{
+                    HashMap<Integer, Integer> cart = (HashMap<Integer, Integer>) session.getAttribute("cart");
+                    //b3: chen 1 dong recore vao bang order
+                    //b4: lay order id cuar b3 
+                    //b5: duyet cai gio hang de chen order detail
+                    OrderDAO orDAO = new OrderDAO();
+                    int rs = orDAO.insertOrders(accId, cart);
+                    //b6: xoa gio hang
+                    if(rs > 0){
+                    session.removeAttribute("cart");
+                    session.removeAttribute("numProCart");
+                    request.setAttribute("MSG", "Mua hàng thành công!");
+                    request.getRequestDispatcher("client/cart.jsp").forward(request, response);
+                    }
                 }
             }
         }catch(Exception e){

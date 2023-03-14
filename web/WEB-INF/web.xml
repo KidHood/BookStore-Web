@@ -32,6 +32,15 @@
         <filter-name>FilterCheckOut</filter-name>
         <filter-class>Filters.FilterCheckOut</filter-class>
     </filter>
+    <filter>
+        <filter-name>FilterChangePwd</filter-name>
+        <filter-class>Filters.FilterChangePwd</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterChangePwd</filter-name>
+        <servlet-name>ChangePwdServlet</servlet-name>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>FilterCheckOut</filter-name>
         <servlet-name>CheckOutServlet</servlet-name>
@@ -65,10 +74,12 @@
     <filter-mapping>
         <filter-name>FilterOrderAdmin</filter-name>
         <servlet-name>UpdateOrderAdminServlet</servlet-name>
+        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>FilterCateAdmin</filter-name>
         <servlet-name>UpdateCategoriesServlet</servlet-name>
+        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
     <listener>
         <description>ServletContextListener</description>
@@ -182,6 +193,14 @@
         <servlet-name>AdminController</servlet-name>
         <servlet-class>controller.AdminController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewAllCategoriesAdminservlet</servlet-name>
+        <servlet-class>controller.ViewAllCategoriesAdminservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllOrderAdminServlet</servlet-name>
+        <servlet-class>controller.ViewAllOrderAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/main-controller</url-pattern>
@@ -289,6 +308,14 @@
     <servlet-mapping>
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/admin-controller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllCategoriesAdminservlet</servlet-name>
+        <url-pattern>/view-all-categories</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllOrderAdminServlet</servlet-name>
+        <url-pattern>/view-all-order</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

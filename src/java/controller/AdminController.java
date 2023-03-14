@@ -38,7 +38,6 @@ public class AdminController extends HttpServlet {
             HashMap<String, String> map = (HashMap)context.getAttribute("mapAdminAction");
             String action = request.getParameter("action");
             String url = "";
-            System.out.println(action);
             for(String actionTemp : map.keySet()){
                 if(actionTemp.equals(action)){
                     url = map.get(actionTemp);

@@ -44,14 +44,15 @@ public class RegisterServlet extends HttpServlet {
             String fullname = request.getParameter("fullName");
             String phone = request.getParameter("phone");
 
-            String url = "login.jsp";
+            String url = "/client/registration.jsp";
            
             AccountDAO accDAO = new AccountDAO();
             password = Encode.toSHA1(password);
             boolean rs = accDAO.insert(new Account(0, user, password, fullname, 1, phone, 0));
             if(rs)
                 url="/client/registerSuccess.jsp";
-            
+            else
+                request.setAttribute("error", "Đăng kí tài khoản thất bại vui lòng thử lại");
             request.getRequestDispatcher(url).forward(request, response);
 
         }catch(Exception e){

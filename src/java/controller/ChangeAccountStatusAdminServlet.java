@@ -52,6 +52,7 @@ public class ChangeAccountStatusAdminServlet extends HttpServlet {
                 url="view-all-account";
             }else{
                 msg = "Cập nhật thất bại";
+                url="view-all-account";
             }
             request.setAttribute("MSG", msg);
             request.getRequestDispatcher(url).forward(request, response);

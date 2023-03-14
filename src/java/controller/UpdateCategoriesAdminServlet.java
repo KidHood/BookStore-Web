@@ -36,7 +36,7 @@ public class UpdateCategoriesAdminServlet extends HttpServlet {
            
            BookDAO bookDAO = new BookDAO();
            String msg = "";
-           String url = "admin/categories.jsp";
+           String url = "/admin-controller?action=ViewAllCategories";
            
            if(action.equals("addNew")){
               String catename = request.getParameter("newcatename");

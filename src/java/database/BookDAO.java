@@ -121,7 +121,7 @@ public class BookDAO implements DAOInterface<Book>{
         try{
             conn = JDBCUtils.makeConnection();
             if(conn != null){
-                String sql ="select CateName from Categories where CateName = ?";
+                String sql ="select CateName from Categories where CateName like ?";
                 PreparedStatement pst = conn.prepareStatement(sql);
                 pst.setString(1, catename);
                 ResultSet rs =  pst.executeQuery();

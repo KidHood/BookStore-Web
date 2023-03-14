@@ -22,5 +22,5 @@
                 <li class="nav-item"><a href="#"
                         class="nav-link px-2 text-white">Blogs</a></li>
         </ul>
-       <p class="text-center text-white mb-3">© 2022 vanthong, Inc</p>
+       <p class="text-center text-white mb-0">© 2022 vanthong, Inc</p>
 </footer>

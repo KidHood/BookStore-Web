@@ -15,6 +15,8 @@ public enum AdminEnum {
     ViewAllBook("ViewAllBook","/view-all-book"),
     ViewBookDetail("ViewBookDetail","/view-book-detail"),
     ViewOrderDetail("ViewOrderDetail","/view-order-detail"),
+    ViewAllCategories("ViewAllCategories","/view-all-categories"),
+    ViewAllOrder("ViewAllOrder","/view-all-order"),
     //update
     UpdateOrder("UpdateOrder","/update-order-admin"),
     UpdateCategories("UpdateCategories","/update-categories"),

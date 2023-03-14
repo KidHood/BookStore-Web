@@ -41,7 +41,7 @@ public class UpdateOrderAdminServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String action = request.getParameter("actionAdmin");
             String msg = "";
-            String url = "admin/order.jsp";
+            String url = "/admin-controller?action=ViewAllOrder";
             OrderDAO orDAO = new OrderDAO();
             
             if(action.equals("update") ){
@@ -60,21 +60,28 @@ public class UpdateOrderAdminServlet extends HttpServlet {
                 String to = request.getParameter("todate");
                 Date fromDate = null;
                 Date toDate = null;
+                Date fromCheck = null;
+                Date toCheck = null;
                 
                 //parse from
                 if(!from.trim().isEmpty() && from != null){
                     fromDate = Date.valueOf(from);
+                    fromCheck = fromDate;
                     fromDate = UntilDate.addDate(fromDate, -1);
                 //khoi tao todate neu null
                 }
                 if(!to.isEmpty() && to != null){
                     toDate = Date.valueOf(to);
                 }
+                toCheck= toDate;
                 if(to.trim().isEmpty() || to == null || to.equals("null")){
                     toDate = new Date(System.currentTimeMillis());
                 }
-                if(fromDate.after(toDate)){
-                        msg = "Khoảng lọc sai";
+                if(fromCheck.after(toDate)){
+                    msg = "Khoảng lọc sai";
+                    request.setAttribute("action", "filterdate");
+                    request.setAttribute("fromdate", from);
+                    request.setAttribute("todate", to);
                 }else {
                     toDate = UntilDate.addDate(toDate, 1);
                     Date tempFromDate = fromDate;
@@ -88,6 +95,7 @@ public class UpdateOrderAdminServlet extends HttpServlet {
                     request.setAttribute("fromdate", from);
                     request.setAttribute("todate", to);
                     request.setAttribute("listOrder", listTemp);
+                    url="/admin/order.jsp";
                 }
             }else if(action.equals("filterusername") ){
                 String accid = request.getParameter("accid");
@@ -97,6 +105,7 @@ public class UpdateOrderAdminServlet extends HttpServlet {
                 request.setAttribute("action", "filterusername");
                 request.setAttribute("email", email);
                 request.setAttribute("listOrder", lists);
+                url="/admin/order.jsp";
             }
             request.setAttribute("MSG", msg);
             request.getRequestDispatcher(url).forward(request, response);

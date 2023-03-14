@@ -74,9 +74,9 @@
                                     </tr>
                                 </thead>
                                  <c:set var="total" value="0"/>
+                                 <jsp:useBean id="boDAO" class="database.BookDAO" />
+                                <jsp:useBean id="boTemp" class="model.Book" />
                                 <c:forEach items="${lists.keySet()}" var="id">
-                                    <jsp:useBean id="boDAO" class="database.BookDAO" />
-                                    <jsp:useBean id="boTemp" class="model.Book" />
                                     <jsp:setProperty name="boTemp" property="id" value="${id}"/>
                                     <c:set var="book" value="${boDAO.selectById(boTemp)}" />
                                     <c:set var="total" value="${total + (book.price * lists.get(id))}" />

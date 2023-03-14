@@ -5,6 +5,7 @@
  */
 package test;
 
+import database.BookDAO;
 import java.util.HashMap;
 
 
@@ -15,11 +16,8 @@ import java.util.HashMap;
  */
 public class TestConnection {
     public static void main(String[] args) {
-        String pattern = "\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b";
-        String phone  = "vanthong@07012002.com";
-        System.out.println(phone.matches(pattern));
-        String test = " ";
-        HashMap in = new HashMap();
+        BookDAO bo_DAO = new BookDAO();
+        System.out.println(bo_DAO.selectCatename("Truyen Tranh"));
         
     }
 }
