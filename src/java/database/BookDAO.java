@@ -56,7 +56,7 @@ public class BookDAO implements DAOInterface<Book>{
                 String sql = "select PID, PName, price, imgPath, description,status,Plants.CateID as 'CateID',CateName\n" +
 "                            from Plants join Categories on Plants.CateID=Categories.CateID \n" +
 "								where status = 1 ";
-                if(searchBy.equalsIgnoreCase("byname"))
+                if(searchBy.equalsIgnoreCase("findname"))
                     sql = sql + "and Plants.PName like ?  ";
                 else
                     sql += "  and CateName like ?";

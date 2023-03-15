@@ -55,7 +55,7 @@
 
                             <div class="form-outline mb-4">
                               <input type="text" id="form3Example2cg" class="form-control form-control-lg input-change" name = "fullName" value="${requestScope.txtname}" />
-                              <label class="form-label" for="form3Example3cg">Tên của bạn</label>
+                              <label class="form-label" for="form3Example3cg">Tên của bạn <span class="red">${requestScope.fullnamerror}</span></label>
                             </div>
                              <div class="form-outline mb-4">
                               <input type="text" id="form3Example3cg" class="form-control form-control-lg input-change" name = "phone" value="${requestScope.txtphone}"  />

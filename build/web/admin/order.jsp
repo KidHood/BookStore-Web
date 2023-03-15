@@ -96,10 +96,10 @@
                     <c:if test="${listOrder != null}">
                         <table class="table mt-4 text-white">
                             <tr class="">
-                                 <th scope="col">Orderid</th>
-                                <th scope="col">Ngày mua hàng</th>
-                                <th scope="col">Ngày ship</th>
-                                <th scope="col">Trạng thái</th>
+                                 <th scope="col">ORDERID</th>
+                                <th scope="col">NGÀY MUA HÀNG</th>
+                                <th scope="col">NGÀY SHIP</th>
+                                <th scope="col">TRẠNG THÁI</th>
                                 <th scope="col">EMAIL</th>
                                 <th scope="col">CHỌN</th>
                                 <th scope="col">CHI TIẾT</th>
