@@ -2,34 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/client/historyOrder.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/database/BookDAO.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/client/orderDetail.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/OrderDetailServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/ViewAllAccountAdminServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/SearchServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/ChangeBookStatusAdminServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/Filters/FilterAllAccount.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/ChangePwdServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/ViewAllCategoriesAdminservlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/client/cart.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/admin/updateBook.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/database/OrderDAO.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/ViewBookDetail.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/index.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/client/bookDetail.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/client/registration.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/UpdateCategoriesAdminServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/FirstPage.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/Filters/FilterRegister.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/AddToCartServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/common/header.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/Filters/FilterCateAdmin.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/web/admin/order.jsp</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/RegisterServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/controller/UpdateOrderAdminServlet.java</file>
-            <file>file:/D:/Major/Semester_4/Prj/hangout/BigAssignment_2/src/java/Filters/FilterAllAccountRequest.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
