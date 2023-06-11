@@ -44,3 +44,6 @@ Admin users have access to an admin dashboard to manage the book inventory.
 ## Contributing
 
 Contributions to the Book Store project are welcome. If you find any issues or have suggestions for improvements, please feel free to submit a pull request or open an issue.
+
+[![](https://img.shields.io/badge/Email-vanthong07012002@gmail.com-blue?style=flat-square&logo=gmail)](mailto:vanthong07012002@gmail.com)
+[![](https://img.shields.io/badge/LinkedIn-linkedin.com/in/kidhood-blue?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/kidhood/)
